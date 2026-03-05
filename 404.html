@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Webappzo</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background: #060608;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0;
+        }
+
+        .error-container {
+            max-width: 600px;
+            padding: 3rem;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .error-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .error-desc {
+            margin-bottom: 2.5rem;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 12px 25px -10px var(--primary-glow);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 45px -12px var(--primary-glow);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-container glass">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Whoops! Lost in Space?</h1>
+        <p class="error-desc">The page you're looking for doesn't exist or has been moved. Don't let your digital
+            presence fade—head back and dominate!</p>
+        <a href="index.html" class="back-btn">Dominate Again (Home)</a>
+    </div>
+
+    <!-- 3D Decorative Element Reused -->
+    <div class="hero-3d-container" style="position: fixed; opacity: 0.2;">
+        <div class="floating-cube"></div>
+    </div>
+</body>
+
+</html>
