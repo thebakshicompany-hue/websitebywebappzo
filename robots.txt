@@ -1,4 +1,18 @@
+# Robots.txt for Webappzo - bdpro.in
+# https://bdpro.in/
+
 User-agent: *
 Allow: /
+Disallow: /private/
+Disallow: /admin/
 
-Sitemap: https://bd.bdpro.in/sitemap.xml
+# Sitemap location
+Sitemap: https://bdpro.in/sitemap.xml
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
