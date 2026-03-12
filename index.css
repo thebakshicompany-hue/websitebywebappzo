@@ -1302,32 +1302,4 @@ input:checked+.slider:before {
         transform: scale(1.1);
         opacity: 0.8;
     }
-}
-
-/* Holi Banner */
-.holi-banner {
-    background: linear-gradient(90deg, #ff007f, #ffaa00, #00ff00, #00ffff, #7f00ff);
-    background-size: 200% 200%;
-    animation: gradientShift 5s ease infinite;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    position: relative;
-    z-index: 2000;
-}
-
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
+}
