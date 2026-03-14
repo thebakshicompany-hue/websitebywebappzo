@@ -170,10 +170,12 @@
     <link rel="stylesheet" href="index.css">
 
     <!-- Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></noscript>
 
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
     <!-- Performance Optimization: Fonts & Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -194,10 +196,10 @@
     <link rel="preload" as="video" href="websitebackgground/14380225_1920_1080_24fps.mp4" type="video/mp4">
 
     <!-- Razorpay Checkout SDK -->
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
 
     <!-- PocketBase SDK -->
-    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@vlatest/dist/pocketbase.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@vlatest/dist/pocketbase.umd.js" defer></script>
 </head>
 
 <body>
@@ -244,7 +246,7 @@
                 <li><a href="#clients">Clients</a></li>
                 <li><a href="#why-us">Why Choose Us</a></li>
                 <li><a href="hindi.html" class="lang-link">हिन्दी</a></li>
-                <li><a href="https://webappzo.bdpro.in/sign-in" class="btn-primary">Login</a></li>
+                <li><a href="https://webappzo.bdpro.in/sign-in" class="btn-primary">Login <i class="fas fa-sign-in-alt"></i></a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
@@ -268,10 +270,8 @@
                 <p>Webappzo is the <strong>Best Indian Website Builder for Small Business</strong>. Build truly
                     unforgettable websites with the most affordable alternative to Wix and Shopify in India.</p>
                 <div class="hero-btns">
-                    <a href="#pricing" class="btn-primary">Explore Our Plans</a>
-                    <a href="#apps" class="btn-primary"
-                        style="background: transparent; border: 1px solid var(--glass-border); margin-left: 1rem; box-shadow: none;">Discover
-                        Our Apps</a>
+                    <a href="#pricing" class="btn-primary btn-cta-pulse">Explore Our Plans <i class="fas fa-arrow-right"></i></a>
+                    <a href="#apps" class="btn-outline" style="margin-left: 1rem;">Discover Our Apps <i class="fas fa-rocket"></i></a>
                 </div>
             </div>
         </section>
@@ -1532,7 +1532,7 @@
 
         // YouTube Iframe API
     </script>
-    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://www.youtube.com/iframe_api" defer></script>
     <script src='https://cdn.jotfor.ms/agent/embedjs/0195834a3fdc755c8ee3e31fd0da25212cff/embed.js' defer></script>
     <script>
         // Preloader Hide Logic
