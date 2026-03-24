@@ -106,11 +106,16 @@
 
     <!-- Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></noscript>
+    <noscript>
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    </noscript>
 
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 
     <!-- Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -180,7 +185,8 @@
                 <li><a href="#clients">ग्राहक</a></li>
                 <li><a href="#why-us">हमें क्यों चुनें</a></li>
                 <li><a href="index.html" class="lang-link">English</a></li>
-                <li><a href="https://webappzo.bdpro.in/sign-in" class="btn-primary">लॉगिन <i class="fas fa-sign-in-alt"></i></a></li>
+                <li><a href="https://webappzo.bdpro.in/sign-in" class="btn-primary">लॉगिन <i
+                            class="fas fa-sign-in-alt"></i></a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
@@ -200,8 +206,10 @@
                 <p>वेबऐपज़ो <strong>छोटे व्यवसायों के लिए सर्वश्रेष्ठ भारतीय वेबसाइट निर्माता</strong> है। भारत में Wix
                     और Shopify के सबसे किफायती विकल्प के साथ वास्तव में अविस्मरणीय वेबसाइटें बनाएं।</p>
                 <div class="hero-btns">
-                    <a href="#pricing" class="btn-primary btn-cta-pulse">हमारी योजनाएं देखें <i class="fas fa-arrow-right"></i></a>
-                    <a href="#apps" class="btn-outline" style="margin-left: 1rem;">हमारे ऐप्स खोजें <i class="fas fa-rocket"></i></a>
+                    <a href="#pricing" class="btn-primary btn-cta-pulse">हमारी योजनाएं देखें <i
+                            class="fas fa-arrow-right"></i></a>
+                    <a href="#apps" class="btn-outline" style="margin-left: 1rem;">हमारे ऐप्स खोजें <i
+                            class="fas fa-rocket"></i></a>
                 </div>
             </div>
         </section>
@@ -765,8 +773,8 @@
                     <ul>
                         <li><a href="https://www.instagram.com/webappzo.bdpro.in/" target="_blank"
                                 rel="noopener noreferrer"><i class="fab fa-instagram"></i> इंस्टाग्राम</a></li>
-                        <li><a href="https://ig.me/m/webappzo.bdpro.in" target="_blank"
-                                rel="noopener noreferrer"><i class="fab fa-instagram"></i> इंस्टा चैट</a></li>
+                        <li><a href="https://ig.me/m/webappzo.bdpro.in" target="_blank" rel="noopener noreferrer"><i
+                                    class="fab fa-instagram"></i> इंस्टा चैट</a></li>
                         <li><a href="https://www.youtube.com/@WEBAPPZO" target="_blank" rel="noopener noreferrer"><i
                                     class="fab fa-youtube"></i> यूट्यूब</a></li>
                         <li><a href="https://share.google/92oCiRinMKWJyxdtc" target="_blank"
@@ -876,7 +884,7 @@
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-player', {
-                videoId: 'BkaK4XruFWg',
+                videoId: 'qg0BIOiQ0VthOpG9',
                 playerVars: {
                     'autoplay': 1,
                     'controls': 0,
@@ -884,7 +892,7 @@
                     'showinfo': 0,
                     'loop': 1,
                     'mute': 1,
-                    'playlist': 'BkaK4XruFWg',
+                    'playlist': 'qg0BIOiQ0VthOpG9',
                     'playsinline': 1,
                     'iv_load_policy': 3,
                     'disablekb': 1,
@@ -1110,7 +1118,7 @@
 
                 let baseAmount = (pendingType === 'plan') ? (isAnnual ? prices[pendingItem].annual : prices[pendingItem].monthly) : pendingBasePrice;
                 const finalAmount = Math.round(baseAmount * (1 - discountPercent / 100));
-                
+
                 let description = pendingItem + (pendingType === 'plan' ? (isAnnual ? " Annual Subscription" : " Monthly Subscription") : " Purchase");
                 if (appliedCoupon) {
                     description += ` (Coupon: ${appliedCoupon})`;
