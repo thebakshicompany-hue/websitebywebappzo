@@ -196,10 +196,10 @@
     <link rel="preload" as="video" href="websitebackgground/14380225_1920_1080_24fps.mp4" type="video/mp4">
 
     <!-- Razorpay Checkout SDK -->
-    <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <!-- PocketBase SDK -->
-    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@vlatest/dist/pocketbase.umd.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@vlatest/dist/pocketbase.umd.js"></script>
 </head>
 
 <body>
@@ -1462,7 +1462,7 @@
                         if (pbId) {
                             await pb.collection('users').update(pbId, {
                                 "subscription_status": "active",
-                                "razorpay_payment_id": response.razorpay_payment_id,
+                                "razorpaypaymentid": response.razorpay_payment_id,
                                 "plan": itemName
                             });
                         }

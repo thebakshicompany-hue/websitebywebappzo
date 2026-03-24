@@ -130,10 +130,10 @@
     <link rel="preload" as="video" href="websitebackgground/14380225_1920_1080_24fps.mp4" type="video/mp4">
 
     <!-- Razorpay Checkout SDK -->
-    <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <!-- PocketBase SDK -->
-    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@vlatest/dist/pocketbase.umd.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@vlatest/dist/pocketbase.umd.js"></script>
 </head>
 
 <body>
@@ -1074,15 +1074,62 @@
             e.preventDefault();
             const email = document.getElementById('user-email').value;
             const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             submitBtn.disabled = true;
+
             try {
+                let pbUserId = null;
+                if (pendingType === 'plan') {
+                    const password = document.getElementById('user-password').value;
+                    const passwordConfirm = document.getElementById('user-password-confirm').value;
+
+                    if (password !== passwordConfirm) {
+                        showPaymentNotification("त्रुटि", "पासवर्ड मेल नहीं खाते।", "error");
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.disabled = false;
+                        return;
+                    }
+
+                    try {
+                        const record = await pb.collection('users').create({
+                            "email": email,
+                            "password": password,
+                            "passwordConfirm": passwordConfirm,
+                            "name": "Webappzo Customer",
+                            "emailVisibility": true
+                        });
+                        pbUserId = record.id;
+                    } catch (err) {
+                        throw err;
+                    }
+                }
+
                 authModal.classList.remove('active');
                 document.body.style.overflow = '';
+
                 let baseAmount = (pendingType === 'plan') ? (isAnnual ? prices[pendingItem].annual : prices[pendingItem].monthly) : pendingBasePrice;
                 const finalAmount = Math.round(baseAmount * (1 - discountPercent / 100));
-                payNow(pendingItem, finalAmount, pendingItem, email, null);
-            } catch (error) { console.error(error); }
-            finally { submitBtn.disabled = false; }
+                
+                let description = pendingItem + (pendingType === 'plan' ? (isAnnual ? " Annual Subscription" : " Monthly Subscription") : " Purchase");
+                if (appliedCoupon) {
+                    description += ` (Coupon: ${appliedCoupon})`;
+                }
+
+                payNow(pendingItem, finalAmount, description, email, pbUserId);
+            } catch (error) {
+                console.error("PocketBase Detailed Error:", error);
+                let errorMessage = "ऑपरेशन विफल रहा। ईमेल पहले से ही पंजीकृत हो सकता है।";
+                if (error.data && error.data.data) {
+                    const fields = error.data.data;
+                    const firstField = Object.keys(fields)[0];
+                    errorMessage = `${firstField}: ${fields[firstField].message}`;
+                }
+                showPaymentNotification("खाता त्रुटि", errorMessage, "error");
+            } finally {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
         });
 
         function payNow(itemName, amount, description, userEmail, pbId) {
@@ -1093,10 +1140,53 @@
                 "name": "Webappzo",
                 "description": description,
                 "image": "images/image5.png",
-                "handler": function (response) {
-                    showPaymentNotification("खरीदारी सफल!", `ID: ${response.razorpay_payment_id}.`, "success");
+                "handler": async function (response) {
+                    showPaymentNotification("खरीदारी सफल!", `ID: ${response.razorpay_payment_id}. Item: ${itemName}`, "success");
+
+                    try {
+                        if (pbId) {
+                            await pb.collection('users').update(pbId, {
+                                "subscription_status": "active",
+                                "razorpaypaymentid": response.razorpay_payment_id,
+                                "plan": itemName
+                            });
+                        }
+
+                        await pb.collection('y8rbrr7zfslviul').create({
+                            "email": userEmail,
+                            "item": itemName,
+                            "amount": amount,
+                            "payment_id": response.razorpay_payment_id,
+                            "type": pendingType,
+                            "billing": (pendingType === 'plan') ? (isAnnual ? "Annual" : "Monthly") : "One-time",
+                            "coupon": appliedCoupon || "None"
+                        });
+                    } catch (e) {
+                        console.error("Failed to sync transaction to PocketBase", e);
+                    }
                 },
-                "prefill": { "email": userEmail }
+                "modal": {
+                    "ondismiss": function () {
+                        showPaymentNotification("भुगतान लंबित", "इस खरीदारी को पूरा करने के लिए भुगतान आवश्यक है।", "error");
+                    }
+                },
+                "prefill": {
+                    "name": "Customer",
+                    "email": userEmail,
+                    "contact": ""
+                },
+                "notes": {
+                    "item": itemName,
+                    "type": pendingType,
+                    "billing": (pendingType === 'plan') ? (isAnnual ? "Annual" : "Monthly") : "One-time",
+                    "user_email": userEmail,
+                    "pocketbase_id": pbId || "Guest",
+                    "coupon_applied": appliedCoupon || "None",
+                    "platform": "Webappzo Hindi Site"
+                },
+                "theme": {
+                    "color": "#dc2626"
+                }
             };
             const rzp = new Razorpay(options);
             rzp.open();
