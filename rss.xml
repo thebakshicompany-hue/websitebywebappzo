@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Webappzo Blog</title>
+  <link>https://bdpro.in/blog.html</link>
+  <description>Insights, updates, and tutorials to help you dominate the digital world.</description>
+  <language>en-in</language>
+  <pubDate>Wed, 25 Mar 2026 12:00:00 GMT</pubDate>
+  <lastBuildDate>Thu, 26 Mar 2026 12:00:00 GMT</lastBuildDate>
+  <atom:link href="https://bdpro.in/rss.xml" rel="self" type="application/rss+xml" />
+
+  <item>
+    <title>Samajika Update: Dev Vlog &amp; UI Progress</title>
+    <link>https://bdpro.in/blog.html#samajika-update</link>
+    <description>Watch the exclusive development vlog and read about our major strides with the UI glassmorphism and the highly anticipated Reel System in Samajika.</description>
+    <pubDate>Thu, 26 Mar 2026 12:00:00 GMT</pubDate>
+    <guid isPermaLink="false">samajika-ui-progress-26</guid>
+  </item>
+
+  <item>
+    <title>Introducing Webappzo Pro Features</title>
+    <link>https://bdpro.in/blog.html</link>
+    <description>We are excited to announce our new powerful AI integrations and enhanced website builder tools that will take your business to the next level.</description>
+    <pubDate>Wed, 25 Mar 2026 12:00:00 GMT</pubDate>
+    <guid isPermaLink="false">webappzo-pro-features-26</guid>
+  </item>
+
+  <item>
+    <title>Why SEO Matters for Startups</title>
+    <link>https://bdpro.in/blog.html</link>
+    <description>Learn how optimizing your Webappzo site for search engines can drive organic traffic and help your business dominate competitors.</description>
+    <pubDate>Tue, 10 Mar 2026 12:00:00 GMT</pubDate>
+    <guid isPermaLink="false">seo-startups-26</guid>
+  </item>
+
+  <item>
+    <title>How to maximize your Digital Identity</title>
+    <link>https://bdpro.in/blog.html</link>
+    <description>Your website is your storefront in the online ecosystem. Here are 5 ways you can design a more engaging experience using Webappzo templates.</description>
+    <pubDate>Sat, 28 Feb 2026 12:00:00 GMT</pubDate>
+    <guid isPermaLink="false">digital-identity-26</guid>
+  </item>
+</channel>
+</rss>

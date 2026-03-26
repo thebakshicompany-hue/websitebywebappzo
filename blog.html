@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Webappzo Blog</title>
+    <meta name="description"
+        content="Read the latest insights, updates, and news on web development and business tools from Webappzo.">
+    <link rel="canonical" href="https://bdpro.in/blog.html">
+    <link rel="alternate" type="application/rss+xml" title="Webappzo RSS Feed" href="rss.xml">
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/image5.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .blog-header {
+            padding: 10rem 0 4rem;
+            text-align: center;
+        }
+
+        .blog-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .blog-card {
+            padding: 2rem;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-date {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .blog-excerpt {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .article-content h2 {
+            color: #fff;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .article-content h3 {
+            color: var(--secondary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .vlog-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .vlog-container video, .vlog-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+        }
+
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            margin-top: 4rem;
+        }
+
+        .author-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .author-info p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- YouTube Background -->
+    <div class="video-background">
+        <div id="youtube-player"></div>
+    </div>
+    <div class="hero-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,7,10,0.7); z-index: -1;"></div>
+
+    <!-- Sticky Navbar -->
+        <div class="container nav-content">
+            <a href="index.html" class="logo" aria-label="Webappzo Home">
+                <img src="images/image5.png" alt="Webappzo Logo" width="40" height="40">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="blog.html" style="color: var(--primary);">Blog</a></li>
+                <li><a href="rss.xml" target="_blank"><i class="fas fa-rss"></i> RSS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="blog-header">
+            <div class="container">
+                <h1 class="text-gradient">Webappzo Blog</h1>
+                <p style="color: var(--text-gray); font-size: 1.2rem; max-width: 600px; margin: 1rem auto;">Insights,
+                    updates, and tutorials to help you dominate the digital world.</p>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="blog-grid">
+                    <!-- Blog Post: Samajika Update (Full Article) -->
+                    <article class="blog-card glass" id="samajika-update" style="border: 1px solid var(--secondary);">
+                        <span class="blog-date">March 26, 2026</span>
+                        <span class="app-tag"
+                            style="background: #8b5cf6; display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; margin-bottom: 0.5rem; color: white;">Samajika</span>
+                        <h2 class="blog-title" style="font-size: 2.2rem;">Samajika Update: Dev Vlog & UI Progress</h2>
+                        
+                        <div class="article-content">
+                            <p class="lead" style="font-size: 1.25rem; color: #fff; margin-bottom: 2rem;">
+                                The team has been working tirelessly on the next big iteration of Samajika. Today, we're thrilled to share our latest development vlog outlining the massive strides we've made with the UI and our highly anticipated Reel System.
+                            </p>
+
+                            <!-- Vlog Developer Video Embed -->
+                            <div class="vlog-container glass">
+                                <!-- Using a local background video as a placeholder for the Dev Vlog -->
+                                <video controls poster="images/image5.png">
+                                    <source src="websitebackgground/14380225_1920_1080_24fps.mp4" type="video/mp4">
+                                    Your browser does not support HTML video.
+                                </video>
+                            </div>
+                            
+                            <p style="text-align: center; font-size: 0.9rem; margin-bottom: 3rem;">
+                                <em>Watch the exclusive Dev Vlog above as Divyansh Bakshi demonstrates the new Samajika interface.</em>
+                            </p>
+
+                            <h2>Refining the UI: A Modern Glassmorphism Approach</h2>
+                            <p>
+                                A major focus has been creating an environment that feels natively premium. We've transitioned the core application scaffolding to a deep, dark mode setting heavily featuring <strong>Glassmorphism</strong>. By adopting a translucent layering system, users will find the navigation feeling lighter, more breathable, and far less obtrusive.
+                            </p>
+                            <p>
+                                The micro-interactions have received a significant overhaul. Buttons now feature sleek hover states, subtle glowing shadows, and satisfying ripple logic, which collectively elevate the tactile response of the platform whether accessed on desktop or mobile. We aimed for an interface that <em>fades into the background</em> so the content can shine.
+                            </p>
+
+                            <h2>The Brand New Reel System</h2>
+                            <p>
+                                Building a seamless short-form content engine is no easy feat. However, our engineering division has completely re-architected the feed algorithm. The new <strong>Samajika Reel System</strong> boasts:
+                            </p>
+                            <ul>
+                                <li style="margin-bottom: 1rem;"><strong>Infinite Scroll Paging:</strong> Zero-latency pre-fetching of videos allowing for frictionless vertical scrolling.</li>
+                                <li style="margin-bottom: 1rem;"><strong>Hardware Accelerated Playback:</strong> Using the latest web standards, videos decode dynamically to preserve battery life while maintaining 60FPS fluid UI transitions.</li>
+                                <li style="margin-bottom: 1rem;"><strong>Dynamic Engagement Mechanics:</strong> Double-tap to heart, hold to pause, and a beautifully animated comment drawer that slides over the video without stopping playback.</li>
+                            </ul>
+
+                            <h3>AI-Powered Content Curation</h3>
+                            <p>
+                                Beyond aesthetics and performance, the background machinery powering the Reel System has been integrated with the same AI intelligence used in our Webappzo dashboards. This means smarter content matching, ensuring you only see the most relevant, high-quality posts tailored to your network and interaction history.
+                            </p>
+
+                            <h2>What's Next?</h2>
+                            <p>
+                                Our QA team is currently running load tests simulating thousands of concurrent viewers for the Reel System. While there is still polish to be applied to the notifications tab and direct messaging, we are confident that Samajika will soon set a new benchmark for social communication within our ecosystem. Stay tuned for the public beta release coming in the following weeks.
+                            </p>
+
+                            <!-- Author Box -->
+                            <div class="author-box">
+                                <img src="images/image5.png" alt="Divyansh Bakshi" class="author-img">
+                                <div class="author-info">
+                                    <h4>Divyansh Bakshi</h4>
+                                    <p>Founder & Visionary, pushing the boundaries of the Webappzo ecosystem.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Post 1 -->
+                    <article class="blog-card glass">
+                        <span class="blog-date">March 25, 2026</span>
+                        <h2 class="blog-title">Introducing Webappzo Pro Features</h2>
+                        <p class="blog-excerpt">We are excited to announce our new powerful AI integrations and enhanced
+                            website builder tools that will take your business to the next level.</p>
+                        <a href="#" class="read-more">Read Full Post <i class="fas fa-arrow-right"></i></a>
+                    </article>
+
+                    <!-- Blog Post 2 -->
+                    <article class="blog-card glass">
+                        <span class="blog-date">Match 10, 2026</span>
+                        <h2 class="blog-title">Why SEO Matters for Startups</h2>
+                        <p class="blog-excerpt">Learn how optimizing your Webappzo site for search engines can drive
+                            organic traffic and help your business dominate competitors.</p>
+                        <a href="#" class="read-more">Read Full Post <i class="fas fa-arrow-right"></i></a>
+                    </article>
+
+                    <!-- Blog Post 3 -->
+                    <article class="blog-card glass">
+                        <span class="blog-date">February 28, 2026</span>
+                        <h2 class="blog-title">How to maximize your Digital Identity</h2>
+                        <p class="blog-excerpt">Your website is your storefront in the online ecosystem. Here are 5 ways
+                            you can design a more engaging experience using Webappzo templates.</p>
+                        <a href="#" class="read-more">Read Full Post <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+    <script defer>
+        // Initialize 3D Tilt for Glass Cards (Desktop only for performance)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.innerWidth > 768) {
+                VanillaTilt.init(document.querySelectorAll(".glass"), {
+                    max: 5,
+                    speed: 400,
+                    glare: true,
+                    "max-glare": 0.2,
+                    perspective: 1000
+                });
+            }
+        });
+
+        // Performance Script: Pause Video when tab is hidden
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden && window.player) {
+                player.pauseVideo();
+            } else if (window.player) {
+                player.playVideo();
+            }
+        });
+
+        // AOS Initialization with Safety Check
+        window.addEventListener('load', () => {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-out',
+                    once: true
+                });
+            } else {
+                // Failsafe: If AOS fails to load, make everything visible
+                console.warn('AOS library not loaded. Creating failsafe.');
+                document.querySelectorAll('[data-aos]').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
+            }
+        });
+
+        // Make videos play slightly faster for dynamic feel
+        // document.querySelectorAll('video').forEach(video => {
+        //     video.playbackRate = 1.5;
+        // });
+
+        // Global YouTube Player
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                videoId: 'M03MzLmhLk4',
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'rel': 0,
+                    'showinfo': 0,
+                    'loop': 1,
+                    'mute': 1,
+                    'playlist': 'M03MzLmhLk4',
+                    'playsinline': 1,
+                    'iv_load_policy': 3,
+                    'disablekb': 1,
+                    'fs': 0,
+                    'modestbranding': 1
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+            const iframe = document.getElementById('youtube-player');
+            if (iframe) {
+                iframe.setAttribute('tabindex', '-1');
+                iframe.style.pointerEvents = 'none';
+            }
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo">
+                        <img src="images/image5.png" alt="Webappzo Footer Logo" width="40" height="40">
+                    </a>
+                    <p>Creating digital experiences that dominate.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="rss.xml">RSS Feed</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="sitemap.xml">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Webappzo - Award-Winning Website Builder.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://www.youtube.com/iframe_api" defer></script>
+</body>
+
+</html>
