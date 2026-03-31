@@ -4,8 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found | Webappzo</title>
+
+    <!-- SEO Meta -->
+    <title>404 - Page Not Found | Webappzo - Best Indian Website Builder</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Visit Webappzo's homepage to explore our website builder, AI tools, and business solutions for Indian startups.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://bdpro.in/404.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="404 - Page Not Found | Webappzo">
+    <meta property="og:description" content="This page doesn't exist. Head back to Webappzo and dominate the digital world.">
+    <meta property="og:image" content="https://bdpro.in/images/image5.png">
+    <meta property="og:url" content="https://bdpro.in/404.html">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/image5.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/image5.png">
+
+    <meta name="theme-color" content="#dc2626">
+
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,6 +36,7 @@
             background: #060608;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -54,6 +75,7 @@
         .back-btn {
             display: inline-flex;
             align-items: center;
+            gap: 0.5rem;
             padding: 1rem 2rem;
             border-radius: 999px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -68,6 +90,25 @@
             transform: translateY(-4px);
             box-shadow: 0 20px 45px -12px var(--primary-glow);
         }
+
+        .helpful-links {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .helpful-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .helpful-links a:hover {
+            color: var(--primary);
+        }
     </style>
 </head>
 
@@ -77,7 +118,15 @@
         <h1 class="error-title">Whoops! Lost in Space?</h1>
         <p class="error-desc">The page you're looking for doesn't exist or has been moved. Don't let your digital
             presence fade—head back and dominate!</p>
-        <a href="index.html" class="back-btn">Dominate Again (Home)</a>
+        <a href="index.html" class="back-btn"><i class="fas fa-home"></i> Dominate Again (Home)</a>
+
+        <nav class="helpful-links" aria-label="Helpful Links">
+            <a href="index.html#pricing">Pricing</a>
+            <a href="blog.html">Blog</a>
+            <a href="index.html#apps">Apps</a>
+            <a href="website-builder-for-small-business-india.html">Small Business</a>
+            <a href="sitemap.xml">Sitemap</a>
+        </nav>
     </div>
 
     <!-- 3D Decorative Element Reused -->

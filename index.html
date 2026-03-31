@@ -75,28 +75,65 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/image5.png">
     <link rel="shortcut icon" href="images/image5.png">
 
-    <!-- Structured Data - Organization -->
+    <!-- Structured Data - Organization (Deep Entity) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Webappzo",
+        "alternateName": "Webappzo by bdpro.in",
         "url": "https://bdpro.in",
-        "logo": "https://bdpro.in/images/image5.png",
-        "description": "Webappzo builds truly unforgettable websites with premium digital solutions, AI-powered tools, and affordable pricing.",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://bdpro.in/images/image5.png",
+            "width": 512,
+            "height": 512
+        },
+        "description": "Webappzo is the best Indian website builder for small businesses. Build unforgettable websites with AI chatbot, SEO tools, UPI payments, and 15+ integrated apps from ₹0/month.",
+        "foundingDate": "2022",
         "founder": {
             "@type": "Person",
-            "name": "Divyansh Bakshi"
+            "name": "Divyansh Bakshi",
+            "jobTitle": "Founder & CEO",
+            "url": "https://bdpro.in"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "India"
+        },
+        "numberOfEmployees": {
+            "@type": "QuantitativeValue",
+            "minValue": 2,
+            "maxValue": 10
         },
         "sameAs": [
             "https://www.instagram.com/webappzo.bdpro.in/",
-            "https://www.youtube.com/@WEBAPPZO"
+            "https://www.youtube.com/@WEBAPPZO",
+            "https://share.google/92oCiRinMKWJyxdtc"
         ],
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",
+            "email": "support@bdpro.in",
             "availableLanguage": ["English", "Hindi"]
-        }
+        },
+        "knowsAbout": ["Website Building", "AI Chatbots", "SEO Optimization", "Digital Marketing", "E-Commerce", "UPI Payments", "Video Conferencing"]
+    }
+    </script>
+
+    <!-- Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://bdpro.in/"
+            }
+        ]
     }
     </script>
 
@@ -137,7 +174,7 @@
     }
     </script>
 
-    <!-- Structured Data - FAQ -->
+    <!-- Structured Data - FAQ (Expanded) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -162,6 +199,20 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes, SEO optimization is included in the Webappzo Plus, Pro, and Max plans to help your website dominate search results."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Is Webappzo better than Wix or Shopify for Indian businesses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For Indian small businesses, Webappzo is the superior choice. It is 10-40x cheaper than Wix (₹1,400+/mo) or Shopify (₹3,200+/mo), includes 15+ integrated business apps at no extra cost, offers native UPI payment integration, and provides full code export on the Max plan."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Does Webappzo include an AI chatbot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Webappzo includes a built-in AI-powered chatbot starting from the Pro plan at ₹149/month. Unlike competitors that require expensive third-party plugins, Webappzo's AI chatbot is included at no extra cost and operates 24/7 for automated customer support."
         }
       }]
     }
@@ -261,6 +312,9 @@
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menu-overlay"></div>
 
     <!-- Main Content for SEO (No. 1 optimization) -->
     <main>
@@ -965,11 +1019,12 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
                         <li><a href="#apps">Our Apps</a></li>
                         <li><a href="#why-us">Why Choose Us</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="rss.xml">RSS Feed</a></li>
+                        <li><a href="website-builder-for-small-business-india.html">Small Business India</a></li>
+                        <li><a href="ai-chatbot-website-builder.html">AI Chatbot Builder</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -992,9 +1047,11 @@
                                 Insta Chat</a></li>
                         <li><a href="https://www.youtube.com/@WEBAPPZO" target="_blank" rel="noopener noreferrer"><i
                                     class="fab fa-youtube"></i> Youtube</a></li>
-                        <li><a href="https://share.google/92oCiRinMKWJyxdtc" target="_blank"
+                         <li><a href="https://share.google/92oCiRinMKWJyxdtc" target="_blank"
                                 rel="noopener noreferrer"><i class="fab fa-google"></i> Google</a>
                         </li>
+                        <li><a href="https://linktr.ee/webappzo" target="_blank" rel="noopener noreferrer"><i
+                                    class="fas fa-link"></i> Linktree</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -1182,22 +1239,48 @@
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
         const menuIcon = menuToggle.querySelector('i');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        function openMenu() {
+            navLinks.classList.add('active');
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-times');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            menuIcon.classList.add('fa-bars');
+            menuIcon.classList.remove('fa-times');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Reset stagger animation state after transition
+            setTimeout(() => {
+                navLinks.querySelectorAll('li').forEach(li => {
+                    li.style.transitionDelay = '';
+                });
+            }, 500);
+        }
 
         menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-times');
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            navLinks.classList.contains('active') ? closeMenu() : openMenu();
         });
+
+        // Close menu when clicking overlay
+        menuOverlay.addEventListener('click', closeMenu);
 
         // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuIcon.classList.add('fa-bars');
-                menuIcon.classList.remove('fa-times');
-                document.body.style.overflow = '';
-            });
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
         });
 
         // Razorpay Payment Integration

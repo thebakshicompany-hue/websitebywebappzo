@@ -4,58 +4,89 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://bdpro.in/</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://bdpro.in/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://bdpro.in/hindi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://bdpro.in/"/>
     <image:image>
       <image:loc>https://bdpro.in/images/image5.png</image:loc>
-      <image:title>Webappzo Logo</image:title>
+      <image:title>Webappzo Logo - Best Indian Website Builder</image:title>
+      <image:caption>Webappzo - Dominate, Don't Just Exist. Premium website builder for Indian businesses.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://bdpro.in/hindi.html</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://bdpro.in/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://bdpro.in/hindi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://bdpro.in/"/>
   </url>
   <url>
-    <loc>https://bdpro.in/#about</loc>
-    <lastmod>2026-02-26</lastmod>
+    <loc>https://bdpro.in/blog.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://bdpro.in/images/image5.png</image:loc>
+      <image:title>Webappzo Blog - Web Development Tips and SEO Insights</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bdpro.in/website-builder-for-small-business-india.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://bdpro.in/ai-chatbot-website-builder.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://bdpro.in/404.html</loc>
+    <lastmod>2026-03-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.30</priority>
   </url>
   <url>
     <loc>https://bdpro.in/#pricing</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://bdpro.in/#apps</loc>
-    <lastmod>2026-02-26</lastmod>
+    <loc>https://bdpro.in/#about</loc>
+    <lastmod>2026-03-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://webappzo.bdpro.in/</loc>
-    <lastmod>2026-02-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
+    <loc>https://bdpro.in/#apps</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://bdpro.in/blog.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.80</priority>
+    <loc>https://bdpro.in/#faq</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://bdpro.in/rss.xml</loc>
-    <lastmod>2026-03-25</lastmod>
+    <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://webappzo.bdpro.in/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
   </url>
 </urlset>
