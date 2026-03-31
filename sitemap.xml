@@ -9,6 +9,9 @@
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://bdpro.in/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://bdpro.in/hindi.html"/>
+    <xhtml:link rel="alternate" hreflang="ta" href="https://bdpro.in/tamil.html"/>
+    <xhtml:link rel="alternate" hreflang="te" href="https://bdpro.in/telugu.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://bdpro.in/bengali.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://bdpro.in/"/>
     <image:image>
       <image:loc>https://bdpro.in/images/image5.png</image:loc>
@@ -23,6 +26,36 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://bdpro.in/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://bdpro.in/hindi.html"/>
+    <xhtml:link rel="alternate" hreflang="ta" href="https://bdpro.in/tamil.html"/>
+    <xhtml:link rel="alternate" hreflang="te" href="https://bdpro.in/telugu.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://bdpro.in/bengali.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bdpro.in/"/>
+  </url>
+  <url>
+    <loc>https://bdpro.in/tamil.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bdpro.in/"/>
+    <xhtml:link rel="alternate" hreflang="ta" href="https://bdpro.in/tamil.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bdpro.in/"/>
+  </url>
+  <url>
+    <loc>https://bdpro.in/telugu.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bdpro.in/"/>
+    <xhtml:link rel="alternate" hreflang="te" href="https://bdpro.in/telugu.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bdpro.in/"/>
+  </url>
+  <url>
+    <loc>https://bdpro.in/bengali.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bdpro.in/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://bdpro.in/bengali.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://bdpro.in/"/>
   </url>
   <url>

@@ -23,7 +23,7 @@
     <link rel="alternate" hreflang="x-default" href="https://bdpro.in/blog.html">
 
     <!-- Language & Geo -->
-    <meta name="language" content="English">
+    <meta name="language" content="en">
     <meta name="geo.region" content="IN">
     <meta name="geo.placename" content="India">
     <meta name="revisit-after" content="3 days">
@@ -309,6 +309,14 @@
         style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,7,10,0.7); z-index: -1;">
     </div>
 
+    <!-- Mute Control -->
+    <div id="mute-control">
+        <button id="mute-toggle" aria-label="Toggle Audio">
+            <i class="fas fa-volume-mute"></i>
+        </button>
+        <div class="mute-label">Audio</div>
+    </div>
+
     <!-- Sticky Navbar -->
     <nav id="navbar" class="scrolled" style="background: rgba(5, 7, 10, 0.95);">
         <div class="container nav-content">
@@ -321,6 +329,16 @@
                 <li><a href="index.html#pricing">Pricing</a></li>
                 <li><a href="blog.html" style="color: var(--primary);">Blog</a></li>
                 <li><a href="rss.xml" target="_blank"><i class="fas fa-rss"></i> RSS</a></li>
+                <li class="lang-dropdown">
+                    <a href="#" class="lang-link"><i class="fas fa-globe"></i> Language</a>
+                    <ul class="lang-menu">
+                        <li><a href="index.html" class="active-lang">🇬🇧 English</a></li>
+                        <li><a href="hindi.html">🇮🇳 हिन्दी</a></li>
+                        <li><a href="tamil.html">🇮🇳 தமிழ்</a></li>
+                        <li><a href="telugu.html">🇮🇳 తెలుగు</a></li>
+                        <li><a href="bengali.html">🇮🇳 বাংলা</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
@@ -549,6 +567,29 @@
                 iframe.setAttribute('tabindex', '-1');
                 iframe.style.pointerEvents = 'none';
             }
+        }
+
+        // Mute logic
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+        function onPlayerReady(event) {
+            const muteBtn = document.getElementById('mute-toggle');
+            const icon = muteBtn.querySelector('i');
+            muteBtn.addEventListener('click', function() {
+                if (player.isMuted()) {
+                    player.unMute();
+                    icon.className = 'fas fa-volume-up';
+                } else {
+                    player.mute();
+                    icon.className = 'fas fa-volume-mute';
+                }
+            });
         }
     </script>
 
