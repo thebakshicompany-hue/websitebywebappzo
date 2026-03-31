@@ -379,6 +379,30 @@
                             stays
                             ahead of digital trends, ensuring you <strong>don't just exist</strong>, you thrive.</p>
                     </div>
+                    <div class="stat-card glass performance-widget" data-aos="fade-up" data-aos-delay="400">
+                        <div class="gauge-container">
+                            <svg class="gauge-svg" viewBox="0 0 160 160">
+                                <defs>
+                                    <linearGradient id="gauge-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="var(--primary)" />
+                                        <stop offset="100%" stop-color="#4ade80" />
+                                    </linearGradient>
+                                </defs>
+                                <circle class="gauge-bg" cx="80" cy="80" r="70" />
+                                <circle class="gauge-progress" cx="80" cy="80" r="70" />
+                            </svg>
+                            <div class="gauge-text">
+                                <div class="gauge-value-wrap">
+                                    <span class="gauge-value" id="gauge-score">0</span>
+                                    <span class="gauge-max">/100</span>
+                                </div>
+                                <span class="gauge-label">SEO Score</span>
+                            </div>
+                        </div>
+                        <div class="gauge-status">Excellent!</div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-gray);">Our AI-optimized
+                            architecture ensures your site is <strong>pre-built for success</strong>.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1659,6 +1683,39 @@
                 setTimeout(() => notification.remove(), 500);
             }, 5000);
         }
+
+        // Performance Gauge Animation
+        const gaugeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const widget = entry.target;
+                    widget.classList.add('active');
+
+                    const scoreElement = document.getElementById('gauge-score');
+                    if (scoreElement) {
+                        let currentScore = 0;
+                        const targetScore = 88;
+                        const duration = 2000;
+                        const increment = targetScore / (duration / 16);
+
+                        const animateScore = () => {
+                            currentScore += increment;
+                            if (currentScore >= targetScore) {
+                                scoreElement.textContent = targetScore;
+                            } else {
+                                scoreElement.textContent = Math.floor(currentScore);
+                                requestAnimationFrame(animateScore);
+                            }
+                        };
+                        setTimeout(animateScore, 500);
+                    }
+                    gaugeObserver.unobserve(widget);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        const perfWidget = document.querySelector('.performance-widget');
+        if (perfWidget) gaugeObserver.observe(perfWidget);
 
         // YouTube Iframe API
     </script>

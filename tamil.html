@@ -248,6 +248,30 @@
                             முன்னால் இருக்கும் நிபுணத்துவம், நீங்கள் <strong>வெறுமனே இருக்காமல்</strong>, செழிப்பதை
                             உறுதிசெய்கிறது.</p>
                     </div>
+                    <div class="stat-card glass performance-widget" data-aos="fade-up" data-aos-delay="400">
+                        <div class="gauge-container">
+                            <svg class="gauge-svg" viewBox="0 0 160 160">
+                                <defs>
+                                    <linearGradient id="gauge-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="var(--primary)" />
+                                        <stop offset="100%" stop-color="#4ade80" />
+                                    </linearGradient>
+                                </defs>
+                                <circle class="gauge-bg" cx="80" cy="80" r="70" />
+                                <circle class="gauge-progress" cx="80" cy="80" r="70" />
+                            </svg>
+                            <div class="gauge-text">
+                                <div class="gauge-value-wrap">
+                                    <span class="gauge-value" id="gauge-score">0</span>
+                                    <span class="gauge-max">/100</span>
+                                </div>
+                                <span class="gauge-label">SEO மதிப்பெண்</span>
+                            </div>
+                        </div>
+                        <div class="gauge-status">சிறப்பானது!</div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-gray);">எங்கள் AI-உகந்த
+                            கட்டமைப்பு உங்கள் தளம் <strong>வெற்றிக்காக முன்பே கட்டமைக்கப்படுவதை</strong> உறுதி செய்கிறது.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -663,6 +687,39 @@
                 }
             });
         }
+
+        // Performance Gauge Animation
+        const gaugeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const widget = entry.target;
+                    widget.classList.add('active');
+
+                    const scoreElement = document.getElementById('gauge-score');
+                    if (scoreElement) {
+                        let currentScore = 0;
+                        const targetScore = 88;
+                        const duration = 2000;
+                        const increment = targetScore / (duration / 16);
+
+                        const animateScore = () => {
+                            currentScore += increment;
+                            if (currentScore >= targetScore) {
+                                scoreElement.textContent = targetScore;
+                            } else {
+                                scoreElement.textContent = Math.floor(currentScore);
+                                requestAnimationFrame(animateScore);
+                            }
+                        };
+                        setTimeout(animateScore, 500);
+                    }
+                    gaugeObserver.unobserve(widget);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        const perfWidget = document.querySelector('.performance-widget');
+        if (perfWidget) gaugeObserver.observe(perfWidget);
 
         function handlePayment(planName) {
             window.location.href = 'index.html#pricing';

@@ -1753,4 +1753,110 @@ input:checked+.slider:before {
         transform: scale(1.1);
         opacity: 0.8;
     }
-}
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATED PERFORMANCE WIDGET
+   ═══════════════════════════════════════════ */
+.performance-widget {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.gauge-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 1.5rem;
+}
+
+.gauge-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.gauge-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.04);
+    stroke-width: 12;
+}
+
+.gauge-progress {
+    fill: none;
+    stroke: url(#gauge-grad);
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-dashoffset: 440;
+    stroke-dasharray: 440;
+    transition: stroke-dashoffset 2.5s cubic-bezier(0.23, 1, 0.32, 1);
+    filter: drop-shadow(0 0 12px var(--primary-glow));
+}
+
+.performance-widget.active .gauge-progress {
+    stroke-dashoffset: 52.8;
+}
+
+.gauge-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.gauge-value-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.gauge-value {
+    font-size: 3.5rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-white);
+    line-height: 1;
+}
+
+.gauge-max {
+    font-size: 1rem;
+    color: var(--text-gray);
+    opacity: 0.4;
+    font-weight: 500;
+}
+
+.gauge-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-gray);
+    margin-top: 4px;
+    opacity: 0.6;
+}
+
+.gauge-status {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #4ade80;
+    text-shadow: 0 0 20px rgba(74, 222, 128, 0.4);
+    margin-top: 0.5rem;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1) 1.2s;
+}
+
+.performance-widget.active .gauge-status {
+    opacity: 1;
+    transform: translateY(0);
+}
+
