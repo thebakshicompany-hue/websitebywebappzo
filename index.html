@@ -358,7 +358,8 @@
                 <h1 class="text-gradient cssanimation" data-at-sequence="ca__fx-fadeIn">Dominate, Don't Just Exist</h1>
                 <p class="cssanimation" data-at-sequence="ca__fx-fadeIn" data-at-delay="0.5">Webappzo is the
                     <strong>Best Indian Website Builder</strong> for modern innovators. Build truly
-                    unforgettable websites with the most advanced <strong>alternative to Wix</strong> in India.</p>
+                    unforgettable websites with the most advanced <strong>alternative to Wix</strong> in India.
+                </p>
                 <div class="hero-btns">
                     <a href="#pricing" class="btn-primary btn-cta-pulse magnetic">Explore Our Plans <i
                             class="fas fa-arrow-right"></i></a>
@@ -1137,7 +1138,8 @@
                         <li><a href="https://vaishalimediaworks.co.in">Marketing</a>
                         <li><a href="https://bakshinipun.in">Legal</a></li>
                         <li><a href="https://bd.bdpro.in">Founder</a></li>
-                        <li><a href="https://sites.google.com/bakshinipun.in/webappzo/" target="_blank"
+                        <li><a href="https://sites.google.com/bakshinipun.in/webappzo/webappzo-verified-page"
+                                target="https://sites.google.com/bakshinipun.in/webappzo/webappzo-verified-page"
                                 rel="noopener noreferrer">Webappzo Verified</a></li>
                     </ul>
                 </div>
@@ -1349,9 +1351,16 @@
         // Close menu when clicking overlay
         menuOverlay.addEventListener('click', closeMenu);
 
-        // Close menu when clicking a link
+        // Close menu when clicking a link (unless it's the language link in mobile)
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', closeMenu);
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 && link.classList.contains('lang-link')) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('active');
+                    return;
+                }
+                closeMenu();
+            });
         });
 
         // Close menu on Escape key
