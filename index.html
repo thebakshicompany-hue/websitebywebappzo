@@ -21,6 +21,10 @@
     <link rel="canonical" href="https://bdpro.in/">
     <link rel="alternate" hreflang="en" href="https://bdpro.in/">
     <link rel="alternate" hreflang="hi" href="https://bdpro.in/hindi.html">
+    <link rel="alternate" hreflang="ta" href="https://bdpro.in/tamil.html">
+    <link rel="alternate" hreflang="te" href="https://bdpro.in/telugu.html">
+    <link rel="alternate" hreflang="bn" href="https://bdpro.in/bengali.html">
+    <link rel="alternate" hreflang="en-IN" href="https://bdpro.in/">
     <link rel="alternate" hreflang="x-default" href="https://bdpro.in/">
     <link rel="alternate" type="application/rss+xml" title="Webappzo RSS Feed" href="rss.xml">
     <meta name="generator" content="Webappzo V2">
@@ -220,6 +224,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css">
 
     <!-- Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
@@ -272,6 +277,11 @@
         </div>
     </div>
 
+    <!-- Interactive Cursor Elements -->
+    <div class="cursor-follower"></div>
+    <div class="cursor-outer"></div>
+    <div id="cursor-glow" class="cursor-glow"></div>
+
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
 
@@ -279,6 +289,11 @@
     <div class="video-background">
         <div id="youtube-player"></div>
     </div>
+
+    <!-- Premium Tech Floats -->
+    <div class="tech-float float-1"></div>
+    <div class="tech-float float-2"></div>
+    <div class="tech-float float-3"></div>
 
     <!-- Mute Control -->
     <div id="mute-control">
@@ -291,20 +306,20 @@
     <!-- Sticky Navbar -->
     <nav id="navbar">
         <div class="container nav-content">
-            <a href="#" class="logo" aria-label="Webappzo Home">
+            <a href="#" class="logo magnetic" aria-label="Webappzo Home">
                 <img src="images/image5.png" alt="Webappzo Logo - Premium Website Builder" loading="eager" width="40"
                     height="40" decoding="async">
             </a>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#apps">Apps</a></li>
-                <li><a href="#clients">Clients</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="#why-us">Why Choose Us</a></li>
+                <li><a href="#about" class="magnetic">About</a></li>
+                <li><a href="#team" class="magnetic">Team</a></li>
+                <li><a href="#pricing" class="magnetic">Pricing</a></li>
+                <li><a href="#apps" class="magnetic">Apps</a></li>
+                <li><a href="#clients" class="magnetic">Clients</a></li>
+                <li><a href="blog.html" class="magnetic">Blog</a></li>
+                <li><a href="#why-us" class="magnetic">Why Choose Us</a></li>
                 <li class="lang-dropdown">
-                    <a href="#" class="lang-link"><i class="fas fa-globe"></i> Language</a>
+                    <a href="#" class="lang-link magnetic"><i class="fas fa-globe"></i> Language</a>
                     <ul class="lang-menu">
                         <li><a href="index.html" class="active-lang">🇬🇧 English</a></li>
                         <li><a href="hindi.html">🇮🇳 हिन्दी</a></li>
@@ -313,8 +328,8 @@
                         <li><a href="bengali.html">🇮🇳 বাংলা</a></li>
                     </ul>
                 </li>
-                <li><a href="https://webappzo.bdpro.in/sign-in" class="btn-primary">Login <i
-                            class="fas fa-sign-in-alt"></i></a></li>
+                <li><a href="https://webappzo.bdpro.in/sign-in" class="btn-primary" style="margin-left: 20px;">Get
+                        Started <i class="fas fa-rocket"></i></a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
@@ -328,29 +343,33 @@
     <!-- Main Content for SEO (No. 1 optimization) -->
     <main>
         <!-- Hero Section -->
-        <section class="hero" aria-label="Welcome to Webappzo">
+        <section class="hero section-reveal" aria-label="Welcome to Webappzo">
             <div class="hero-overlay"></div>
 
             <!-- 3D Decorative Element -->
             <div class="hero-3d-container" data-aos="zoom-in" data-aos-duration="2000">
                 <div class="floating-cube"></div>
+                <div class="glow-orb"
+                    style="position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, var(--primary-glow) 0%, transparent 60%); top: -100px; right: -100px; opacity: 0.5;">
+                </div>
             </div>
 
             <div class="container hero-content" data-aos="fade-up" data-aos-duration="1200">
-                <h1 class="text-gradient">Dominate, Don't Just Exist</h1>
-                <p>Webappzo is the <strong>Best Indian Website Builder for Small Business</strong>. Build truly
-                    unforgettable websites with the most affordable alternative to Wix and Shopify in India.</p>
+                <h1 class="text-gradient cssanimation" data-at-sequence="ca__fx-fadeIn">Dominate, Don't Just Exist</h1>
+                <p class="cssanimation" data-at-sequence="ca__fx-fadeIn" data-at-delay="0.5">Webappzo is the
+                    <strong>Best Indian Website Builder</strong> for modern innovators. Build truly
+                    unforgettable websites with the most advanced <strong>alternative to Wix</strong> in India.</p>
                 <div class="hero-btns">
-                    <a href="#pricing" class="btn-primary btn-cta-pulse">Explore Our Plans <i
+                    <a href="#pricing" class="btn-primary btn-cta-pulse magnetic">Explore Our Plans <i
                             class="fas fa-arrow-right"></i></a>
-                    <a href="#apps" class="btn-outline" style="margin-left: 1rem;">Discover Our Apps <i
+                    <a href="#apps" class="btn-outline magnetic" style="margin-left: 1rem;">Discover Our Apps <i
                             class="fas fa-rocket"></i></a>
                 </div>
             </div>
         </section>
 
         <!-- Stats Section - Why Webappzo? -->
-        <section class="section" id="why-us" aria-labelledby="why-choose-heading">
+        <section class="section section-reveal" id="why-us" aria-labelledby="why-choose-heading">
             <div class="container text-center">
                 <h2 id="why-choose-heading" class="text-gradient" style="font-size: 3rem; margin-bottom: 2rem;"
                     data-aos="fade-up">Why Choose Webappzo for Digital Success?
@@ -393,7 +412,7 @@
                             </svg>
                             <div class="gauge-text">
                                 <div class="gauge-value-wrap">
-                                    <span class="gauge-value" id="gauge-score">0</span>
+                                    <span class="gauge-value" id="gauge-score">99</span>
                                     <span class="gauge-max">/100</span>
                                 </div>
                                 <span class="gauge-label">SEO Score</span>
@@ -408,9 +427,9 @@
         </section>
 
         <!-- New Section: Transforming Your Digital Landscape -->
-        <section class="section" style="background: rgba(220, 38, 38, 0.02);">
+        <section class="section section-reveal" style="background: rgba(220, 38, 38, 0.02);">
             <div class="container">
-                <div class="glass" style="padding: 4rem; text-align: center;" data-aos="fade-up">
+                <div class="glass" style="padding: 4rem; text-align: center;" data-aos="reveal-left">
                     <h2 class="text-gradient" style="font-size: 2.5rem; margin-bottom: 2rem;">Transforming Your
                         Digital
                         Landscape</h2>
@@ -446,12 +465,12 @@
         </section>
 
         <!-- Comparison Section: Webappzo vs Wix vs GoDaddy vs Shopify -->
-        <section class="section" id="comparison" style="background: rgba(220, 38, 38, 0.01);">
+        <section class="section section-reveal" id="comparison" style="background: rgba(220, 38, 38, 0.01);">
             <div class="container">
                 <h2 class="text-gradient" style="font-size: 2.5rem; margin-bottom: 3rem; text-align: center;"
                     data-aos="fade-up">
                     Webappzo vs Wix vs GoDaddy vs Shopify Comparison</h2>
-                <div class="glass" style="padding: 2rem; overflow-x: auto;" data-aos="fade-up">
+                <div class="glass" style="padding: 2rem; overflow-x: auto;" data-aos="reveal-right">
                     <table style="width: 100%; border-collapse: collapse; color: var(--text-gray); min-width: 600px;">
                         <thead>
                             <tr style="border-bottom: 2px solid var(--glass-border);">
@@ -507,7 +526,7 @@
         </section>
 
         <!-- New Section: The Webappzo Ecosystem -->
-        <section class="section" id="ecosystem">
+        <section class="section section-reveal" id="ecosystem">
             <div class="container">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
                     <div data-aos="fade-right">
@@ -555,7 +574,7 @@
         </section>
 
         <!-- About Section -->
-        <section class="section" id="about" style="position: relative; overflow: hidden;">
+        <section class="section section-reveal" id="about" style="position: relative; overflow: hidden;">
             <div class="container">
                 <div data-aos="fade-right">
                     <h2 class="text-gradient section-title">About the Webappzo Vision</h2>
@@ -977,7 +996,7 @@
         </section>
 
         <!-- Founder & Team Section -->
-        <section class="section" id="team" style="position: relative; overflow: hidden;">
+        <section class="section section-reveal" id="team" style="position: relative; overflow: hidden;">
             <div class="container">
                 <h2 class="text-gradient section-title" data-aos="fade-up">The Minds Behind Webappzo</h2>
 
@@ -1026,7 +1045,7 @@
         </section>
 
         <!-- Clients Section -->
-        <section class="section" id="clients">
+        <section class="section section-reveal" id="clients">
             <div class="container text-center">
                 <h2 class="text-gradient" style="font-size: 2.5rem; margin-bottom: 1rem;" data-aos="fade-up">Trusted By
                     Industry Leaders</h2>
@@ -1118,12 +1137,15 @@
                         <li><a href="https://vaishalimediaworks.co.in">Marketing</a>
                         <li><a href="https://bakshinipun.in">Legal</a></li>
                         <li><a href="https://bd.bdpro.in">Founder</a></li>
+                        <li><a href="https://sites.google.com/bakshinipun.in/webappzo/" target="_blank"
+                                rel="noopener noreferrer">Webappzo Verified</a></li>
                     </ul>
                 </div>
             </div>
+            <div class="footer-mega-text" data-aos="zoom-out" data-aos-duration="2000">WEBAPPZO</div>
             <div class="footer-bottom">
                 <p>&copy; Webappzo - Award-Winning <strong>Website Builder</strong>. All Rights Reserved.</p>
-                <p>Made with <i class="fas fa-heart" style="color: #e9891b;"></i> for the global
+                <p>Made with <i class="fas fa-heart" style="color: #7e1807;"></i> for the global
                     <strong>bdpro.in</strong> community
                 </p>
             </div>
@@ -1721,16 +1743,98 @@
     </script>
     <script src="https://www.youtube.com/iframe_api" defer></script>
     <script src='https://cdn.jotfor.ms/agent/embedjs/0195834a3fdc755c8ee3e31fd0da25212cff/embed.js' defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/animtext@latest/dist/animtext.min.js" defer></script>
     <script>
-        // Preloader Hide Logic
+        // Flagship Animations: Cursor, Magnetic, and Scroll Blur
+        const follower = document.querySelector('.cursor-follower');
+        const outer = document.querySelector('.cursor-outer');
+        const glow = document.getElementById('cursor-glow');
+        let mouseX = 0, mouseY = 0;
+        let followX = 0, followY = 0;
+        let outerX = 0, outerY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (glow) glow.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        });
+
+        // Smooth Cursor Follower Logic
+        function animateCursor() {
+            followX += (mouseX - followX) * 0.15;
+            followY += (mouseY - followY) * 0.15;
+            outerX += (mouseX - outerX) * 0.1;
+            outerY += (mouseY - outerY) * 0.1;
+
+            if (follower) follower.style.transform = `translate(${followX}px, ${followY}px)`;
+            if (outer) outer.style.transform = `translate(${outerX}px, ${outerY}px)`;
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Magnetic Elements Logic
+        const magneticElements = document.querySelectorAll('.btn-primary, .btn-outline, .logo, .stat-card');
+        magneticElements.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+
+                if (follower) follower.classList.add('cursor-hover');
+                if (outer) outer.classList.add('cursor-outer-hover');
+            });
+
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = `translate(0, 0)`;
+                if (follower) follower.classList.remove('cursor-hover');
+                if (outer) outer.classList.remove('cursor-outer-hover');
+            });
+        });
+
+        // Sophisticated Reveal Logic (Intersection Observer for clip-path)
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('aos-animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('[data-aos^="reveal"]').forEach(el => revealObserver.observe(el));
+
+        // Preloader Hide Logic (Already exists, but adding AOS refresh)
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             setTimeout(() => {
                 preloader.classList.add('fade-out');
                 setTimeout(() => {
                     preloader.style.display = 'none';
+                    if (window.AOS) AOS.refresh();
                 }, 800);
             }, 500);
+        });
+
+        // Parallax Floating Elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelectorAll('.tech-float').forEach((float, index) => {
+                const speed = (index + 1) * 0.2;
+                float.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Section Reveal Intersection Observer
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section-reveal').forEach(section => {
+            sectionObserver.observe(section);
         });
     </script>
 </body>

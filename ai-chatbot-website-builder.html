@@ -18,8 +18,13 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
     <link rel="canonical" href="https://bdpro.in/ai-chatbot-website-builder.html">
-    <link rel="alternate" hreflang="en" href="https://bdpro.in/ai-chatbot-website-builder.html">
-    <link rel="alternate" hreflang="x-default" href="https://bdpro.in/ai-chatbot-website-builder.html">
+    <link rel="alternate" hreflang="en" href="https://bdpro.in/">
+    <link rel="alternate" hreflang="hi" href="https://bdpro.in/hindi.html">
+    <link rel="alternate" hreflang="ta" href="https://bdpro.in/tamil.html">
+    <link rel="alternate" hreflang="te" href="https://bdpro.in/telugu.html">
+    <link rel="alternate" hreflang="bn" href="https://bdpro.in/bengali.html">
+    <link rel="alternate" hreflang="en-IN" href="https://bdpro.in/ai-chatbot-website-builder.html">
+    <link rel="alternate" hreflang="x-default" href="https://bdpro.in/">
 
     <!-- Language & Geo -->
     <meta name="language" content="en">
@@ -157,6 +162,7 @@
         media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css">
     </noscript>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -279,7 +285,7 @@
     <main>
         <section class="niche-hero">
             <div class="container">
-                <h1 class="text-gradient">AI Chatbot Website Builder for Indian Businesses</h1>
+                <h1 class="text-gradient cssanimation" data-at-sequence="ca__fx-fadeIn">AI Chatbot Website Builder for Indian Businesses</h1>
                 <p>The only website builder with a <strong>built-in AI chatbot</strong> that handles customer queries
                     24/7. No third-party plugins, no extra cost — included in Webappzo Pro from
                     <strong>₹149/month</strong>.
@@ -434,6 +440,7 @@
                         <li><a href="mailto:support@bdpro.in">Contact</a></li>
                          <li><a href="https://linktr.ee/webappzo" target="_blank" rel="noopener noreferrer"><i
                                      class="fas fa-link"></i> Linktree</a></li>
+                         <li><a href="https://sites.google.com/bakshinipun.in/webappzo/" target="_blank" rel="noopener noreferrer">Official Site</a></li>
                     </ul>
                 </div>
             </div>
@@ -443,6 +450,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/animtext@latest/dist/animtext.min.js" defer></script>
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
@@ -454,6 +462,18 @@
                 icon.classList.toggle('fa-times');
             });
         }
+
+        // Hover Effect
+        document.querySelectorAll('.glass').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+                card.style.boxShadow = '0 20px 40px rgba(220, 38, 38, 0.15)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = 'none';
+            });
+        });
     </script>
 </body>
 

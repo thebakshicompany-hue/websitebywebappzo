@@ -25,6 +25,7 @@
     <link rel="alternate" hreflang="ta" href="https://bdpro.in/tamil.html">
     <link rel="alternate" hreflang="te" href="https://bdpro.in/telugu.html">
     <link rel="alternate" hreflang="bn" href="https://bdpro.in/bengali.html">
+    <link rel="alternate" hreflang="en-IN" href="https://bdpro.in/">
     <link rel="alternate" hreflang="x-default" href="https://bdpro.in/">
     <link rel="alternate" type="application/rss+xml" title="Webappzo RSS Feed" href="rss.xml">
     <meta name="generator" content="Webappzo V2">
@@ -93,6 +94,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -144,7 +146,8 @@
                         <li><a href="bengali.html">🇮🇳 বাংলা</a></li>
                     </ul>
                 </li>
-                <li><a href="https://webappzo.bdpro.in/sign-in" class="btn-primary">లాగిన్ <i class="fas fa-sign-in-alt"></i></a></li>
+                <li><a href="https://webappzo.bdpro.in/sign-in" class="btn-primary" style="margin-left: 20px;">ప్రారంభించండి <i
+                            class="fas fa-rocket"></i></a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
         </div>
@@ -155,7 +158,7 @@
             <div class="hero-overlay"></div>
             <div class="hero-3d-container" data-aos="zoom-in" data-aos-duration="2000"><div class="floating-cube"></div></div>
             <div class="container hero-content" data-aos="fade-up" data-aos-duration="1200">
-                <h1 class="text-gradient">ఆధిపత్యం చేయండి, కేవలం ఉనికిలో ఉండకండి</h1>
+                <h1 class="text-gradient cssanimation" data-at-sequence="ca__fx-fadeIn">ఆధిపత్యం చేయండి, కేవలం ఉనికిలో ఉండకండి</h1>
                 <p>వెబాప్జో <strong>చిన్న వ్యాపారాలకు అత్యుత్తమ భారతీయ వెబ్‌సైట్ బిల్డర్</strong>. భారతదేశంలో Wix
                     మరియు Shopify కి అత్యంత అందుబాటులో ఉన్న ప్రత్యామ్నాయంతో నిజంగా మర్చిపోలేని వెబ్‌సైట్‌లను నిర్మించండి.</p>
                 <div class="hero-btns">
@@ -385,6 +388,7 @@
                         <li><a href="sitemap.xml">సైట్‌మ్యాప్</a></li>
                         <li><a href="https://wcee.42web.io/corp/?page_id=38">ప్రైవసీ పాలసీ</a></li>
                         <li><a href="https://wcee.42web.io/corp/?page_id=26">సర్వీస్ నిబంధనలు</a></li>
+                        <li><a href="https://sites.google.com/bakshinipun.in/webappzo/" target="_blank" rel="noopener noreferrer">వెబాప్జో వెరిఫైడ్</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -420,8 +424,30 @@
         function handlePayment(planName) { window.location.href = 'index.html#pricing'; }
     </script>
     <script src="https://www.youtube.com/iframe_api" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/animtext@latest/dist/animtext.min.js" defer></script>
     <script>
-        window.addEventListener('load', () => { const preloader = document.getElementById('preloader'); setTimeout(() => { preloader.classList.add('fade-out'); setTimeout(() => { preloader.style.display = 'none'; }, 800); }, 500); });
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    if (window.AOS) AOS.refresh();
+                }, 800);
+            }, 500);
+        });
+
+        // Hover Effect
+        document.querySelectorAll('.glass').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+                card.style.boxShadow = '0 20px 40px rgba(220, 38, 38, 0.15)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = 'none';
+            });
+        });
     </script>
 </body>
 

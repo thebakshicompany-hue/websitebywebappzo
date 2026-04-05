@@ -18,8 +18,13 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
     <link rel="canonical" href="https://bdpro.in/website-builder-for-small-business-india.html">
-    <link rel="alternate" hreflang="en" href="https://bdpro.in/website-builder-for-small-business-india.html">
-    <link rel="alternate" hreflang="x-default" href="https://bdpro.in/website-builder-for-small-business-india.html">
+    <link rel="alternate" hreflang="en" href="https://bdpro.in/">
+    <link rel="alternate" hreflang="hi" href="https://bdpro.in/hindi.html">
+    <link rel="alternate" hreflang="ta" href="https://bdpro.in/tamil.html">
+    <link rel="alternate" hreflang="te" href="https://bdpro.in/telugu.html">
+    <link rel="alternate" hreflang="bn" href="https://bdpro.in/bengali.html">
+    <link rel="alternate" hreflang="en-IN" href="https://bdpro.in/website-builder-for-small-business-india.html">
+    <link rel="alternate" hreflang="x-default" href="https://bdpro.in/">
 
     <!-- Language & Geo -->
     <meta name="language" content="en">
@@ -219,6 +224,7 @@
         media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css">
     </noscript>
 
     <!-- Fonts -->
@@ -386,7 +392,7 @@
         <!-- Hero Section -->
         <section class="niche-hero" aria-labelledby="niche-heading">
             <div class="container">
-                <h1 id="niche-heading" class="text-gradient">Best Website Builder for Small Business in India</h1>
+                <h1 id="niche-heading" class="text-gradient cssanimation" data-at-sequence="ca__fx-fadeIn">Best Website Builder for Small Business in India</h1>
                 <p>Build a professional website for your Indian business starting at <strong>₹0/month</strong>. Webappzo
                     is the most affordable alternative to Wix and Shopify — with <strong>AI chatbot, SEO tools, UPI
                         payments</strong>, and 15+ integrated apps included.</p>
@@ -652,6 +658,7 @@
                         <li><a href="mailto:support@bdpro.in">Contact</a></li>
                          <li><a href="https://linktr.ee/webappzo" target="_blank" rel="noopener noreferrer"><i
                                      class="fas fa-link"></i> Linktree</a></li>
+                         <li><a href="https://sites.google.com/bakshinipun.in/webappzo/" target="_blank" rel="noopener noreferrer">Official Site</a></li>
                     </ul>
                 </div>
             </div>
@@ -661,7 +668,8 @@
         </div>
     </footer>
 
-    <!-- Mobile Menu Script -->
+    <script src="https://cdn.jsdelivr.net/npm/animtext@latest/dist/animtext.min.js" defer></script>
+    <!-- Mobile Menu & Global Effects -->
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
@@ -673,6 +681,18 @@
                 icon.classList.toggle('fa-times');
             });
         }
+
+        // Hover Effect
+        document.querySelectorAll('.glass').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+                card.style.boxShadow = '0 20px 40px rgba(220, 38, 38, 0.15)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = 'none';
+            });
+        });
     </script>
 </body>
 
