@@ -203,6 +203,9 @@
         </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="menu-overlay" class="menu-overlay"></div>
+
     <main>
         <!-- Hero Section -->
         <section class="hero" aria-label="வெபாப்ஸோவுக்கு வரவேற்கிறோம்">
@@ -587,6 +590,47 @@
         </div>
     </footer>
 
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal-overlay">
+        <div class="modal-content glass">
+            <button class="modal-close" id="close-modal">&times;</button>
+            <div class="modal-header">
+                <h3 class="text-gradient">உங்கள் கணக்கை உருவாக்கவும்</h3>
+                <p>கட்டணத்திற்குச் செல்வதற்கு முன் உங்கள் கணக்கைப் பாதுகாக்க உங்கள் விவரங்களை உள்ளிடவும்.</p>
+            </div>
+            <form id="auth-form" class="auth-form">
+                <div class="input-group">
+                    <label for="user-email">மின்னஞ்சல் முகவரி</label>
+                    <input type="email" id="user-email" placeholder="example@gmail.com" required>
+                </div>
+                <div class="input-group" id="password-group">
+                    <label for="user-password">கடவுச்சொல்லை உருவாக்கவும்</label>
+                    <input type="password" id="user-password" placeholder="குறைந்தபட்சம் 8 எழுத்துக்கள்" minlength="8" required>
+                </div>
+                <div class="input-group" id="password-confirm-group">
+                    <label for="user-password-confirm">கடவுச்சொல்லை உறுதிப்படுத்தவும்</label>
+                    <input type="password" id="user-password-confirm" placeholder="கடவுச்சொல்லை மீண்டும் செய்யவும்" minlength="8"
+                        required>
+                </div>
+                <div class="coupon-group">
+                    <input type="text" id="coupon-code" placeholder="கூப்பன் குறியீடு (விருப்பமானது)">
+                    <button type="button" id="apply-coupon" class="btn-secondary">விண்ணப்பிக்கவும்</button>
+                </div>
+                <div id="coupon-message" class="coupon-message"></div>
+                <div class="modal-plan-info">
+                    <span id="selected-plan-name">Webappzo Pro</span>
+                    <div class="price-display">
+                        <span id="original-price" class="old-price"></span>
+                        <span id="selected-plan-price">₹149 ($1.8)</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">கட்டணத்திற்குத் தொடரவும் <i
+                        class="fas fa-arrow-right" style="margin-left: 10px;"></i></button>
+            </form>
+            <p style="font-size: 0.75rem; text-align: center; margin-top: 1.5rem; opacity: 0.6;">தொடருவதன் மூலம், எங்கள் சேவை விதிமுறைகள் மற்றும் தனியுரிமைக் கொள்கையை ஏற்கிறீர்கள்.</p>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
@@ -647,28 +691,65 @@
             scrollProgress.style.width = (winScroll / height) * 100 + "%";
         });
 
+        // Modern Mobile Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
-        const menuIcon = menuToggle.querySelector('i');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-times');
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-        });
+        const menuOverlay = document.getElementById('menu-overlay');
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
+        if (menuToggle && navLinks && menuOverlay) {
+            const menuIcon = menuToggle.querySelector('i');
+
+            const openMenu = () => {
+                navLinks.classList.add('active');
+                if (menuIcon) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                }
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeMenu = () => {
                 navLinks.classList.remove('active');
-                menuIcon.classList.add('fa-bars');
-                menuIcon.classList.remove('fa-times');
+                if (menuIcon) {
+                    menuIcon.classList.add('fa-bars');
+                    menuIcon.classList.remove('fa-times');
+                }
+                menuOverlay.classList.remove('active');
                 document.body.style.overflow = '';
-            });
-        });
+            };
 
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.contains('active') ? closeMenu() : openMenu();
+            });
+
+            menuOverlay.addEventListener('click', closeMenu);
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+        }
+
+        // Initialize PocketBase
+        const pb = new PocketBase('https://pocketbase.bdpro.in');
+
+        // Modal Elements
+        const authModal = document.getElementById('auth-modal');
+        const authForm = document.getElementById('auth-form');
+        const closeModalBtn = document.getElementById('close-modal');
+        const applyCouponBtn = document.getElementById('apply-coupon');
+        const couponInput = document.getElementById('coupon-code');
+        const couponMessage = document.getElementById('coupon-message');
+        const selectedPlanName = document.getElementById('selected-plan-name');
+        const selectedPlanPrice = document.getElementById('selected-plan-price');
+
+        let pendingItem = null;
+        let pendingType = 'plan';
         let isAnnual = false;
+        let discountPercent = 0;
+        let appliedCoupon = null;
+
         const prices = {
-            'Webappzo Plus': { monthly: 79, annual: 799 },
             'Webappzo Pro': { monthly: 149, annual: 1499 },
             'Webappzo Max': { monthly: 599, annual: 5999 }
         };
@@ -680,53 +761,88 @@
                 const monthlyLabel = document.getElementById('monthly-label');
                 const annualLabel = document.getElementById('annual-label');
                 if (isAnnual) {
-                    monthlyLabel.classList.remove('active'); annualLabel.classList.add('active');
+                    if (monthlyLabel) monthlyLabel.classList.remove('active');
+                    if (annualLabel) annualLabel.classList.add('active');
                     document.getElementById('pro-price').innerHTML = '₹1499 ($18)<span>/வருடம்</span>';
                     document.getElementById('max-price').innerHTML = '₹5999 ($72)<span>/வருடம்</span>';
                 } else {
-                    monthlyLabel.classList.add('active'); annualLabel.classList.remove('active');
+                    if (monthlyLabel) monthlyLabel.classList.add('active');
+                    if (annualLabel) annualLabel.classList.remove('active');
                     document.getElementById('pro-price').innerHTML = '₹149 ($1.8)<span>/மாதம்</span>';
                     document.getElementById('max-price').innerHTML = '₹599 ($7.2)<span>/மாதம்</span>';
                 }
             });
         }
 
-        // Performance Gauge Animation
-        const gaugeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const widget = entry.target;
-                    widget.classList.add('active');
+        function handlePayment(planName) {
+            pendingItem = planName;
+            pendingType = 'plan';
+            if (authModal) {
+                authModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            updateModalPrice();
+        }
 
-                    const scoreElement = document.getElementById('gauge-score');
-                    if (scoreElement) {
-                        let currentScore = 0;
-                        const targetScore = 88;
-                        const duration = 2000;
-                        const increment = targetScore / (duration / 16);
+        function updateModalPrice() {
+            let baseAmount = isAnnual ? prices[pendingItem].annual : prices[pendingItem].monthly;
+            const finalAmount = Math.round(baseAmount * (1 - discountPercent / 100));
+            if (selectedPlanName) selectedPlanName.innerText = pendingItem;
+            if (selectedPlanPrice) selectedPlanPrice.innerText = "₹" + finalAmount;
+        }
 
-                        const animateScore = () => {
-                            currentScore += increment;
-                            if (currentScore >= targetScore) {
-                                scoreElement.textContent = targetScore;
-                            } else {
-                                scoreElement.textContent = Math.floor(currentScore);
-                                requestAnimationFrame(animateScore);
-                            }
-                        };
-                        setTimeout(animateScore, 500);
-                    }
-                    gaugeObserver.unobserve(widget);
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', () => {
+                authModal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
+        if (authForm) {
+            authForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const email = document.getElementById('user-email').value;
+                const password = document.getElementById('user-password').value;
+                
+                try {
+                    await pb.collection('users').create({
+                        "email": email,
+                        "password": password,
+                        "passwordConfirm": password,
+                        "name": "Tamil Customer"
+                    });
+                    authModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                    showPaymentNotification("வெற்றி!", "உங்கள் கணக்கு உருவாக்கப்பட்டது. கட்டணத்திற்குச் செல்கிறது...", "success");
+                } catch (err) {
+                    showPaymentNotification("பிழை", "கணக்கு உருவாக்கத் தவறிவிட்டது.", "error");
                 }
             });
-        }, { threshold: 0.2 });
-
-        const perfWidget = document.querySelector('.performance-widget');
-        if (perfWidget) gaugeObserver.observe(perfWidget);
-
-        function handlePayment(planName) {
-            window.location.href = 'index.html#pricing';
         }
+
+        function showPaymentNotification(title, message, type) {
+            const notification = document.createElement('div');
+            notification.className = `payment-notification ${type}`;
+            notification.innerHTML = `<div><strong>${title}</strong><p>${message}</p></div>`;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.classList.add('visible'), 100);
+            setTimeout(() => {
+                notification.classList.remove('visible');
+                setTimeout(() => notification.remove(), 500);
+            }, 5000);
+        }
+
+        // Hover Effect
+        document.querySelectorAll('.glass').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+                card.style.boxShadow = '0 20px 40px rgba(220, 38, 38, 0.15)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = 'none';
+            });
+        });
     </script>
     <script src="https://www.youtube.com/iframe_api" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/animtext@latest/dist/animtext.min.js" defer></script>

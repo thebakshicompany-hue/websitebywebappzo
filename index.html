@@ -1328,199 +1328,204 @@
         // Modern Mobile Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
-        const menuIcon = menuToggle.querySelector('i');
         const menuOverlay = document.getElementById('menu-overlay');
 
-        function openMenu() {
-            navLinks.classList.add('active');
-            menuIcon.classList.remove('fa-bars');
-            menuIcon.classList.add('fa-times');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+        if (menuToggle && navLinks && menuOverlay) {
+            const menuIcon = menuToggle.querySelector('i');
 
-        function closeMenu() {
-            navLinks.classList.remove('active');
-            menuIcon.classList.add('fa-bars');
-            menuIcon.classList.remove('fa-times');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
+            const openMenu = () => {
+                navLinks.classList.add('active');
+                if (menuIcon) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                }
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
 
-            // Reset stagger animation state after transition
-            setTimeout(() => {
-                navLinks.querySelectorAll('li').forEach(li => {
-                    li.style.transitionDelay = '';
-                });
-            }, 500);
-        }
+            const closeMenu = () => {
+                navLinks.classList.remove('active');
+                if (menuIcon) {
+                    menuIcon.classList.add('fa-bars');
+                    menuIcon.classList.remove('fa-times');
+                }
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.contains('active') ? closeMenu() : openMenu();
-        });
+                // Reset stagger animation state after transition
+                setTimeout(() => {
+                    navLinks.querySelectorAll('li').forEach(li => {
+                        li.style.transitionDelay = '';
+                    });
+                }, 500);
+            };
 
-        menuOverlay.addEventListener('click', closeMenu);
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.contains('active') ? closeMenu() : openMenu();
+            });
 
-        // Close menu on link click
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
+            menuOverlay.addEventListener('click', closeMenu);
 
-        // Close menu when clicking overlay
-        menuOverlay.addEventListener('click', closeMenu);
+            // Close menu on link click
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
 
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        // Close menu on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-                closeMenu();
-            }
-        });
-
-        // Razorpay Payment Integration
-        let isAnnual = false;
-        const prices = {
-            'Webappzo Plus': { monthly: 79, annual: 799 },
-            'Webappzo Pro': { monthly: 149, annual: 1499 },
-            'Webappzo Max': { monthly: 599, annual: 5999 }
-        };
-
-        const billingToggle = document.getElementById('billing-toggle');
-        const monthlyLabel = document.getElementById('monthly-label');
-        const annualLabel = document.getElementById('annual-label');
-
-        if (billingToggle) {
-            billingToggle.addEventListener('change', function () {
-                isAnnual = this.checked;
-                updatePricingUI();
+            // Close menu on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    closeMenu();
+                }
             });
         }
 
-        function updatePricingUI() {
-            if (isAnnual) {
-                monthlyLabel.classList.remove('active');
-                annualLabel.classList.add('active');
-
-                document.getElementById('plus-price').innerHTML = '₹799 ($9.6)<span>/year</span>';
-                document.getElementById('pro-price').innerHTML = '₹1499 ($18)<span>/year</span>';
-                document.getElementById('max-price').innerHTML = '₹5999 ($72)<span>/year</span>';
-            } else {
-                monthlyLabel.classList.add('active');
-                annualLabel.classList.remove('active');
-
-                document.getElementById('plus-price').innerHTML = '₹79 ($1)<span>/month</span>';
-                document.getElementById('pro-price').innerHTML = '₹149 ($1.8)<span>/month</span>';
-                document.getElementById('max-price').innerHTML = '₹599 ($7.2)<span>/month</span>';
-            }
-        }
-
-        // Initialize PocketBase
-        const pb = new PocketBase('https://pocketbase.bdpro.in');
-
-        // Modal, Auth & Coupon State
-        const authModal = document.getElementById('auth-modal');
-        const authForm = document.getElementById('auth-form');
-        const closeModalBtn = document.getElementById('close-modal');
-        const applyCouponBtn = document.getElementById('apply-coupon');
-        const couponInput = document.getElementById('coupon-code');
-        const couponMessage = document.getElementById('coupon-message');
-        const passwordGroup = document.getElementById('password-group');
-        const passwordConfirmGroup = document.getElementById('password-confirm-group');
-        const modalTitle = document.querySelector('#auth-modal h3');
-        const modalDesc = document.querySelector('#auth-modal .modal-header p');
-
+        // --- Global Functions & State (Declared early for button availability) ---
+        let isAnnual = false;
         let pendingItem = null;
         let pendingType = 'plan'; // 'plan' or 'token'
         let pendingBasePrice = 0;
         let appliedCoupon = null;
         let discountPercent = 0;
 
-        // Sample Coupons
-        const validCoupons = {
-            'SAVE20': 20,
-            'OFF30': 30,
-            'WELCOME': 10,
-            'BAKSHI S FREIND': 90,
-            'HOLI30': 30
+        const prices = {
+            'Webappzo Plus': { monthly: 79, annual: 799 },
+            'Webappzo Pro': { monthly: 149, annual: 1499 },
+            'Webappzo Max': { monthly: 599, annual: 5999 }
         };
 
+        const validCoupons = {
+            "STARTUP50": 50,
+            "WEBAPPZO10": 10,
+            "BHS8792": 25,
+            "SAVE50": 50
+        };
+
+        function showPaymentNotification(title, message, type) {
+            const notification = document.createElement('div');
+            notification.className = `payment-notification ${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                    <div>
+                        <strong>${title}</strong>
+                        <p>${message}</p>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.classList.add('visible'), 100);
+            setTimeout(() => {
+                notification.classList.remove('visible');
+                setTimeout(() => notification.remove(), 500);
+            }, 5000);
+        }
+
         function handlePayment(planName) {
+            console.log("Payment Triggered for:", planName);
             pendingItem = planName;
             pendingType = 'plan';
             appliedCoupon = null;
             discountPercent = 0;
-            couponInput.value = '';
-            couponMessage.innerText = '';
-            couponMessage.className = 'coupon-message';
-            document.getElementById('original-price').classList.remove('active');
 
-            // Show password fields
-            passwordGroup.style.display = 'flex';
-            passwordConfirmGroup.style.display = 'flex';
-            document.getElementById('user-password').required = true;
-            document.getElementById('user-password-confirm').required = true;
+            const authModal = document.getElementById('auth-modal');
+            const couponInput = document.getElementById('coupon-code');
+            const couponMessage = document.getElementById('coupon-message');
+            const passwordGroup = document.getElementById('password-group');
+            const passwordConfirmGroup = document.getElementById('password-confirm-group');
+            const modalTitle = document.querySelector('#auth-modal h3');
+            const modalDesc = document.querySelector('#auth-modal .modal-header p');
+            const originalPriceDisplay = document.getElementById('original-price');
 
-            modalTitle.innerText = "Create Your Account";
-            modalDesc.innerText = "Enter your details to secure your subscription.";
+            if (couponInput) couponInput.value = '';
+            if (couponMessage) {
+                couponMessage.innerText = '';
+                couponMessage.className = 'coupon-message';
+            }
+            if (originalPriceDisplay) originalPriceDisplay.classList.remove('active');
 
-            updateModalPrice();
+            if (passwordGroup) passwordGroup.style.display = 'flex';
+            if (passwordConfirmGroup) passwordConfirmGroup.style.display = 'flex';
+            
+            const passInput = document.getElementById('user-password');
+            const passConfirmInput = document.getElementById('user-password-confirm');
+            if (passInput) passInput.required = true;
+            if (passConfirmInput) passConfirmInput.required = true;
 
-            // Show Modal
-            authModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function handleTokenPayment(tokenName, price) {
-            pendingItem = tokenName;
-            pendingType = 'token';
-            pendingBasePrice = price;
-            appliedCoupon = null;
-            discountPercent = 0;
-            couponInput.value = '';
-            couponMessage.innerText = '';
-            couponMessage.className = 'coupon-message';
-            document.getElementById('original-price').classList.remove('active');
-
-            // Hide password fields
-            passwordGroup.style.display = 'none';
-            passwordConfirmGroup.style.display = 'none';
-            document.getElementById('user-password').required = false;
-            document.getElementById('user-password-confirm').required = false;
-
-            modalTitle.innerText = "Complete Your Purchase";
-            modalDesc.innerText = "Enter your email to receive your tokens and receipt.";
+            if (modalTitle) modalTitle.innerText = "Create Your Account";
+            if (modalDesc) modalDesc.innerText = "Enter your details to secure your subscription.";
 
             updateModalPrice();
 
-            // Show Modal
-            authModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            if (authModal) {
+                authModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function updateModalPrice() {
-            let baseAmount = 0;
-            if (pendingType === 'plan') {
-                baseAmount = isAnnual ? prices[pendingItem].annual : prices[pendingItem].monthly;
-            } else {
-                baseAmount = pendingBasePrice;
-            }
+            const selectedPlanName = document.getElementById('selected-plan-name');
+            const selectedPlanPrice = document.getElementById('selected-plan-price');
+            const originalPriceDisplay = document.getElementById('original-price');
 
+            let baseAmount = (pendingType === 'plan') ? (isAnnual ? prices[pendingItem].annual : prices[pendingItem].monthly) : pendingBasePrice;
             const finalAmount = Math.round(baseAmount * (1 - discountPercent / 100));
 
-            document.getElementById('selected-plan-name').innerText = pendingItem + (pendingType === 'plan' ? (isAnnual ? " (Annual)" : " (Monthly)") : "");
+            if (selectedPlanName) {
+                selectedPlanName.innerText = pendingItem + (pendingType === 'plan' ? (isAnnual ? " (Annual)" : " (Monthly)") : "");
+            }
 
             if (discountPercent > 0) {
-                document.getElementById('original-price').innerText = "₹" + baseAmount;
-                document.getElementById('original-price').classList.add('active');
-                document.getElementById('selected-plan-price').innerText = "₹" + finalAmount;
+                if (originalPriceDisplay) {
+                    originalPriceDisplay.innerText = "₹" + baseAmount;
+                    originalPriceDisplay.classList.add('active');
+                }
+                if (selectedPlanPrice) selectedPlanPrice.innerText = "₹" + finalAmount;
             } else {
-                document.getElementById('original-price').classList.remove('active');
-                document.getElementById('selected-plan-price').innerText = "₹" + baseAmount;
+                if (originalPriceDisplay) originalPriceDisplay.classList.remove('active');
+                if (selectedPlanPrice) selectedPlanPrice.innerText = "₹" + baseAmount;
             }
         }
+
+        function updatePricingUI() {
+            const plusPrice = document.getElementById('plus-price');
+            const proPrice = document.getElementById('pro-price');
+            const maxPrice = document.getElementById('max-price');
+            const monthlyLabel = document.getElementById('monthly-label');
+            const annualLabel = document.getElementById('annual-label');
+
+            if (isAnnual) {
+                if (monthlyLabel) monthlyLabel.classList.remove('active');
+                if (annualLabel) annualLabel.classList.add('active');
+                if (plusPrice) plusPrice.innerHTML = '₹799 ($9.6)<span>/year</span>';
+                if (proPrice) proPrice.innerHTML = '₹1499 ($18)<span>/year</span>';
+                if (maxPrice) maxPrice.innerHTML = '₹5999 ($72)<span>/year</span>';
+            } else {
+                if (monthlyLabel) monthlyLabel.classList.add('active');
+                if (annualLabel) annualLabel.classList.remove('active');
+                if (plusPrice) plusPrice.innerHTML = '₹79 ($1)<span>/month</span>';
+                if (proPrice) proPrice.innerHTML = '₹149 ($1.8)<span>/month</span>';
+                if (maxPrice) maxPrice.innerHTML = '₹599 ($7.2)<span>/month</span>';
+            }
+        }
+
+        // --- SDK Initialization with Failsafe ---
+        let pb = null;
+        try {
+            pb = new PocketBase('https://pocketbase.bdpro.in');
+        } catch (e) {
+            console.error("PocketBase SDK failed to initialize:", e);
+        }
+
+        // --- Event Listeners & Logic ---
+        const billingToggle = document.getElementById('billing-toggle');
+        if (billingToggle) {
+            billingToggle.addEventListener('change', function () {
+                isAnnual = this.checked;
+                updatePricingUI();
+            });
+        }
+        // Redundant declarations removed - logic consolidated at the top of the script tag.
+        const authForm = document.getElementById('auth-form');
 
         // Coupon Logic
         applyCouponBtn.addEventListener('click', () => {
@@ -1559,86 +1564,108 @@
         });
 
         // Close Modal logic
-        closeModalBtn.addEventListener('click', () => {
-            authModal.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Form Submission -> PocketBase Sync -> Razorpay Payment
-        authForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const email = document.getElementById('user-email').value;
-            const submitBtn = this.querySelector('button[type="submit"]');
-
-            // UI feedback
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            submitBtn.disabled = true;
-
-            try {
-                let pbUserId = null;
-
-                // Only handle user registration for Subscription Plans
-                if (pendingType === 'plan') {
-                    const password = document.getElementById('user-password').value;
-                    const passwordConfirm = document.getElementById('user-password-confirm').value;
-
-                    if (password !== passwordConfirm) {
-                        showPaymentNotification("Error", "Passwords do not match.", "error");
-                        submitBtn.innerHTML = originalBtnText;
-                        submitBtn.disabled = false;
-                        return;
-                    }
-
-                    try {
-                        const record = await pb.collection('users').create({
-                            "email": email,
-                            "password": password,
-                            "passwordConfirm": passwordConfirm,
-                            "name": "Webappzo Customer",
-                            "emailVisibility": true
-                        });
-                        pbUserId = record.id;
-                    } catch (err) {
-                        // User might already exist, try to find them or just re-throw error for handling
-                        throw err;
-                    }
-                }
-
-                // Success! Close modal and proceed to payment
+        if (closeModalBtn && authModal) {
+            closeModalBtn.addEventListener('click', () => {
                 authModal.classList.remove('active');
                 document.body.style.overflow = '';
+            });
+        }
 
-                let baseAmount = (pendingType === 'plan') ?
-                    (isAnnual ? prices[pendingItem].annual : prices[pendingItem].monthly) :
-                    pendingBasePrice;
+        // Form Submission -> PocketBase Sync -> Razorpay Payment
+        if (authForm) {
+            authForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
 
-                const finalAmount = Math.round(baseAmount * (1 - discountPercent / 100));
+                const emailInput = document.getElementById('user-email');
+                if (!emailInput) return;
+                const email = emailInput.value;
+                const submitBtn = this.querySelector('button[type="submit"]');
 
-                let description = pendingItem + (pendingType === 'plan' ? (isAnnual ? " Annual Subscription" : " Monthly Subscription") : " Purchase");
-                if (appliedCoupon) {
-                    description += ` (Coupon: ${appliedCoupon})`;
+                // UI feedback
+                const originalBtnText = submitBtn ? submitBtn.innerHTML : "Continue";
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                    submitBtn.disabled = true;
                 }
 
-                payNow(pendingItem, finalAmount, description, email, pbUserId);
+                try {
+                    let pbUserId = null;
 
-            } catch (error) {
-                console.error("PocketBase Detailed Error:", error);
-                let errorMessage = "Operation failed. Email might already be registered.";
-                if (error.data && error.data.data) {
-                    const fields = error.data.data;
-                    const firstField = Object.keys(fields)[0];
-                    errorMessage = `${firstField}: ${fields[firstField].message}`;
+                    // Only handle user registration for Subscription Plans
+                    if (pendingType === 'plan') {
+                        const passwordInput = document.getElementById('user-password');
+                        const passwordConfirmInput = document.getElementById('user-password-confirm');
+                        if (!passwordInput || !passwordConfirmInput) return;
+
+                        const password = passwordInput.value;
+                        const passwordConfirm = passwordConfirmInput.value;
+
+                        if (password !== passwordConfirm) {
+                            showPaymentNotification("Error", "Passwords do not match.", "error");
+                            if (submitBtn) {
+                                submitBtn.innerHTML = originalBtnText;
+                                submitBtn.disabled = false;
+                            }
+                            return;
+                        }
+
+                        try {
+                            const record = await pb.collection('users').create({
+                                "email": email,
+                                "password": password,
+                                "passwordConfirm": passwordConfirm,
+                                "name": "Webappzo Customer",
+                                "emailVisibility": true
+                            });
+                            pbUserId = record.id;
+                        } catch (err) {
+                            // User might already exist, try to find them or just re-throw error for handling
+                            throw err;
+                        }
+                    }
+
+                    // Success! Close modal and proceed to payment
+                    if (authModal) {
+                        authModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+
+                    let baseAmount = (pendingType === 'plan') ?
+                        (isAnnual ? prices[pendingItem].annual : prices[pendingItem].monthly) :
+                        pendingBasePrice;
+
+                    const finalAmount = Math.round(baseAmount * (1 - discountPercent / 100));
+
+                    let description = pendingItem + (pendingType === 'plan' ? (isAnnual ? " Annual Subscription" : " Monthly Subscription") : " Purchase");
+                    if (appliedCoupon) {
+                        description += ` (Coupon: ${appliedCoupon})`;
+                    }
+
+                    payNow(pendingItem, finalAmount, description, email, pbUserId);
+
+                } catch (error) {
+                    console.error("PocketBase Detailed Error:", error);
+                    let errorMessage = "Operation failed. Email might already be registered.";
+                    if (error.data && error.data.data) {
+                        const fields = error.data.data;
+                        const firstField = Object.keys(fields)[0];
+                        errorMessage = `${firstField}: ${fields[firstField].message}`;
+                    }
+                    showPaymentNotification("Account Error", errorMessage, "error");
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.disabled = false;
+                    }
                 }
-                showPaymentNotification("Account Error", errorMessage, "error");
-            } finally {
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-            }
-        });
+            });
+        }
 
         function payNow(itemName, amount, description, userEmail, pbId) {
+            if (typeof Razorpay === 'undefined') {
+                showPaymentNotification("Payment Error", "Razorpay SDK failed to load. Please check your internet connection or disable ad-blockers.", "error");
+                return;
+            }
             const options = {
                 "key": "rzp_live_SG4wL5Nyhebas5", // Razorpay Live Key ID
                 "amount": amount * 100, // Amount in paise
@@ -1819,17 +1846,24 @@
 
             setTimeout(function() { banner.classList.add('visible'); }, 1500);
 
-            document.getElementById('cookie-accept').addEventListener('click', function() {
-                localStorage.setItem('cookie-consent', 'accepted');
-                banner.classList.remove('visible');
-                banner.classList.add('hidden');
-            });
+            const acceptBtn = document.getElementById('cookie-accept');
+            const declineBtn = document.getElementById('cookie-decline');
 
-            document.getElementById('cookie-decline').addEventListener('click', function() {
-                localStorage.setItem('cookie-consent', 'declined');
-                banner.classList.remove('visible');
-                banner.classList.add('hidden');
-            });
+            if (acceptBtn) {
+                acceptBtn.addEventListener('click', function() {
+                    localStorage.setItem('cookie-consent', 'accepted');
+                    banner.classList.remove('visible');
+                    banner.classList.add('hidden');
+                });
+            }
+
+            if (declineBtn) {
+                declineBtn.addEventListener('click', function() {
+                    localStorage.setItem('cookie-consent', 'declined');
+                    banner.classList.remove('visible');
+                    banner.classList.add('hidden');
+                });
+            }
         })();
     </script>
 </body>
