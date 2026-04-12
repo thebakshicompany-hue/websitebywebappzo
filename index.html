@@ -277,10 +277,7 @@
         </div>
     </div>
 
-    <!-- Interactive Cursor Elements -->
-    <div class="cursor-follower"></div>
-    <div class="cursor-outer"></div>
-    <div id="cursor-glow" class="cursor-glow"></div>
+
 
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
@@ -358,12 +355,11 @@
                 <h1 class="text-gradient cssanimation" data-at-sequence="ca__fx-fadeIn">Dominate, Don't Just Exist</h1>
                 <p class="cssanimation" data-at-sequence="ca__fx-fadeIn" data-at-delay="0.5">Webappzo is the
                     <strong>Best Indian Website Builder</strong> for modern innovators. Build truly
-                    unforgettable websites with the most advanced <strong>alternative to Wix</strong> in India.
-                </p>
-                <div class="hero-btns">
+                    unforgettable websites with the most advanced <strong>alternative to Wix</strong> in India.</p>
+                <div class="hero-btns" style="display:flex;">
                     <a href="#pricing" class="btn-primary btn-cta-pulse magnetic">Explore Our Plans <i
                             class="fas fa-arrow-right"></i></a>
-                    <a href="#apps" class="btn-outline magnetic" style="margin-left: 1rem;">Discover Our Apps <i
+                    <a href="#apps" class="btn-outline magnetic">Discover Our Apps <i
                             class="fas fa-rocket"></i></a>
                 </div>
             </div>
@@ -880,7 +876,7 @@
                         <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Your essential math
                             companion. Solve
                             calculations quickly and efficiently with our intuitive interface.</p>
-                        <a href="#" class="btn-primary" style="opacity: 0.7;">Coming Soon</a>
+                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming Soon</a>
                     </div>
                 </div>
 
@@ -891,7 +887,7 @@
                         <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Advanced mathematics
                             with powerful
                             features. Scientific and graphing capabilities for professionals.</p>
-                        <a href="#" class="btn-primary" style="opacity: 0.7;">Coming Soon</a>
+                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming Soon</a>
                     </div>
                 </div>
 
@@ -913,7 +909,7 @@
                         <h3>Samajika</h3>
                         <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Connect, share, and engage with your
                             community. A next-gen social media platform built for meaningful interactions.</p>
-                        <a href="#" class="btn-primary" style="opacity: 0.7;">Coming Soon</a>
+                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming Soon</a>
                     </div>
                 </div>
 
@@ -923,7 +919,7 @@
                         <h3>Emoji Warz</h3>
                         <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Battle it out with emojis! A fun,
                             fast-paced multiplayer game where strategy meets expression.</p>
-                        <a href="#" class="btn-primary" style="opacity: 0.7;">Coming Soon</a>
+                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming Soon</a>
                     </div>
                 </div>
             </div>
@@ -1135,11 +1131,10 @@
                         <li><a href="https://eventer.bdpro.in">Eventer</a></li>
                         <li><a href="https://zova.bdpro.in">Zova</a></li>
                         <li><a href="https://meeting.bdpro.in">Meeting</a></li>
-                        <li><a href="https://vaishalimediaworks.co.in">Marketing</a>
+                        <li><a href="https://vaishalimediaworks.co.in">Marketing</a></li>
                         <li><a href="https://bakshinipun.in">Legal</a></li>
                         <li><a href="https://bd.bdpro.in">Founder</a></li>
-                        <li><a href="https://sites.google.com/bakshinipun.in/webappzo/webappzo-verified-page"
-                                target="https://sites.google.com/bakshinipun.in/webappzo/webappzo-verified-page"
+                        <li><a href="https://sites.google.com/bakshinipun.in/webappzo/" target="_blank"
                                 rel="noopener noreferrer">Webappzo Verified</a></li>
                     </ul>
                 </div>
@@ -1153,6 +1148,21 @@
             </div>
         </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent">
+        <div class="cookie-inner">
+            <p><i class="fas fa-cookie-bite" style="color: var(--accent); margin-right: 8px;"></i>
+                We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.
+                By clicking "Accept", you consent to our use of cookies.
+                <a href="https://wcee.42web.io/corp/?page_id=38" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+            </p>
+            <div class="cookie-btns">
+                <button id="cookie-decline">Decline</button>
+                <button id="cookie-accept">Accept All</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Auth Modal -->
     <div id="auth-modal" class="modal-overlay">
@@ -1192,7 +1202,7 @@
                         class="fas fa-arrow-right" style="margin-left: 10px;"></i></button>
             </form>
             <p style="font-size: 0.75rem; text-align: center; margin-top: 1.5rem; opacity: 0.6;">
-                By continuing, you agree to our Terms of Service and Privacy Policy.
+                By continuing, you agree to our <a href="https://wcee.42web.io/corp/?page_id=26" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Terms of Service</a> and <a href="https://wcee.42web.io/corp/?page_id=38" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Privacy Policy</a>.
             </p>
         </div>
     </div>
@@ -1348,19 +1358,19 @@
             navLinks.classList.contains('active') ? closeMenu() : openMenu();
         });
 
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
         // Close menu when clicking overlay
         menuOverlay.addEventListener('click', closeMenu);
 
-        // Close menu when clicking a link (unless it's the language link in mobile)
+        // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768 && link.classList.contains('lang-link')) {
-                    e.preventDefault();
-                    link.parentElement.classList.toggle('active');
-                    return;
-                }
-                closeMenu();
-            });
+            link.addEventListener('click', closeMenu);
         });
 
         // Close menu on Escape key
@@ -1754,53 +1764,6 @@
     <script src='https://cdn.jotfor.ms/agent/embedjs/0195834a3fdc755c8ee3e31fd0da25212cff/embed.js' defer></script>
     <script src="https://cdn.jsdelivr.net/npm/animtext@latest/dist/animtext.min.js" defer></script>
     <script>
-        // Flagship Animations: Cursor, Magnetic, and Scroll Blur
-        const follower = document.querySelector('.cursor-follower');
-        const outer = document.querySelector('.cursor-outer');
-        const glow = document.getElementById('cursor-glow');
-        let mouseX = 0, mouseY = 0;
-        let followX = 0, followY = 0;
-        let outerX = 0, outerY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            if (glow) glow.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-        });
-
-        // Smooth Cursor Follower Logic
-        function animateCursor() {
-            followX += (mouseX - followX) * 0.15;
-            followY += (mouseY - followY) * 0.15;
-            outerX += (mouseX - outerX) * 0.1;
-            outerY += (mouseY - outerY) * 0.1;
-
-            if (follower) follower.style.transform = `translate(${followX}px, ${followY}px)`;
-            if (outer) outer.style.transform = `translate(${outerX}px, ${outerY}px)`;
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Magnetic Elements Logic
-        const magneticElements = document.querySelectorAll('.btn-primary, .btn-outline, .logo, .stat-card, .magnetic, .nav-links a');
-        magneticElements.forEach(el => {
-            el.addEventListener('mousemove', (e) => {
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-
-                if (follower) follower.classList.add('cursor-hover');
-                if (outer) outer.classList.add('cursor-outer-hover');
-            });
-
-            el.addEventListener('mouseleave', () => {
-                el.style.transform = `translate(0, 0)`;
-                if (follower) follower.classList.remove('cursor-hover');
-                if (outer) outer.classList.remove('cursor-outer-hover');
-            });
-        });
-
         // Sophisticated Reveal Logic (Intersection Observer for clip-path)
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1845,6 +1808,29 @@
         document.querySelectorAll('.section-reveal').forEach(section => {
             sectionObserver.observe(section);
         });
+    </script>
+
+    <!-- Cookie Consent Logic -->
+    <script>
+        (function() {
+            const banner = document.getElementById('cookie-consent');
+            if (!banner) return;
+            if (localStorage.getItem('cookie-consent')) return;
+
+            setTimeout(function() { banner.classList.add('visible'); }, 1500);
+
+            document.getElementById('cookie-accept').addEventListener('click', function() {
+                localStorage.setItem('cookie-consent', 'accepted');
+                banner.classList.remove('visible');
+                banner.classList.add('hidden');
+            });
+
+            document.getElementById('cookie-decline').addEventListener('click', function() {
+                localStorage.setItem('cookie-consent', 'declined');
+                banner.classList.remove('visible');
+                banner.classList.add('hidden');
+            });
+        })();
     </script>
 </body>
 

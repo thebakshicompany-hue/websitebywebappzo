@@ -340,8 +340,14 @@
                     </ul>
                 </li>
             </ul>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="menu-overlay" class="menu-overlay"></div>
 
     <!-- Breadcrumb Navigation -->
     <nav aria-label="Breadcrumb" style="padding: 6rem 0 0; max-width: 1200px; margin: 0 auto; padding-left: 1.5rem;">
@@ -501,6 +507,39 @@
                     perspective: 1000
                 });
             }
+        });
+
+        // Modern Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const menuIcon = menuToggle.querySelector('i');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        function openMenu() {
+            navLinks.classList.add('active');
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-times');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            menuIcon.classList.add('fa-bars');
+            menuIcon.classList.remove('fa-times');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.contains('active') ? closeMenu() : openMenu();
+        });
+
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
 
         // Performance Script: Pause Video when tab is hidden

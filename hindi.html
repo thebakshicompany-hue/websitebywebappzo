@@ -210,6 +210,9 @@
         </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="menu-overlay" class="menu-overlay"></div>
+
     <main>
         <!-- Hero Section -->
         <section class="hero" aria-label="वेबऐपज़ो में आपका स्वागत है">
@@ -287,7 +290,7 @@
         </section>
 
         <!-- Vision Section -->
-        <section class="section" id="about" style="background: rgba(220, 38, 38, 0.02);">
+        <section class="section" style="background: rgba(220, 38, 38, 0.02);">
             <div class="container">
                 <div class="glass" style="padding: 4rem; text-align: center;" data-aos="fade-up">
                     <h2 class="text-gradient" style="font-size: 2.5rem; margin-bottom: 2rem;">आपके डिजिटल परिदृश्य को
@@ -994,20 +997,32 @@
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
         const menuIcon = menuToggle.querySelector('i');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        function openMenu() {
+            navLinks.classList.add('active');
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-times');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            menuIcon.classList.add('fa-bars');
+            menuIcon.classList.remove('fa-times');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-times');
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            navLinks.classList.contains('active') ? closeMenu() : openMenu();
         });
 
+        menuOverlay.addEventListener('click', closeMenu);
+
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuIcon.classList.add('fa-bars');
-                menuIcon.classList.remove('fa-times');
-                document.body.style.overflow = '';
-            });
+            link.addEventListener('click', closeMenu);
         });
 
         let isAnnual = false;
