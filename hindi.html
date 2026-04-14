@@ -1318,13 +1318,20 @@
     </script>
     <script src="https://www.youtube.com/iframe_api" defer></script>
     <script>
-        window.addEventListener('load', () => {
+        // Robust Preloader Hide Logic
+        const hidePreloader = () => {
             const preloader = document.getElementById('preloader');
+            if (!preloader || preloader.classList.contains('fade-out')) return;
             setTimeout(() => {
                 preloader.classList.add('fade-out');
-                setTimeout(() => { preloader.style.display = 'none'; }, 800);
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    if (window.AOS) AOS.refresh();
+                }, 800);
             }, 500);
-        });
+        };
+        window.addEventListener('load', hidePreloader);
+        setTimeout(hidePreloader, 3000);
     </script>
     <script src='https://cdn.jotfor.ms/agent/embedjs/0195834a3fdc755c8ee3e31fd0da25212cff/embed.js' defer></script>
 </body>

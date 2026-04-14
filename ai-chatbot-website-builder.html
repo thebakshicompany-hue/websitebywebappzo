@@ -250,6 +250,13 @@
 </head>
 
 <body>
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="images/image5.png" alt="Webappzo Logo" class="loader-logo">
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+            <p class="loader-text">Dominate, Don't Just Exist</p>
+        </div>
+    </div>
     <!-- Navbar -->
     <nav id="navbar" class="scrolled" style="background: rgba(5, 7, 10, 0.95);">
         <div class="container nav-content">
@@ -264,6 +271,9 @@
             <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="menu-overlay" class="menu-overlay"></div>
 
     <!-- Breadcrumb -->
     <nav aria-label="Breadcrumb" style="padding: 5.5rem 0 0; max-width: 1200px; margin: 0 auto; padding-left: 1.5rem;">
@@ -454,14 +464,35 @@
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
-            });
+        const menuIcon = menuToggle.querySelector('i');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        function openMenu() {
+            navLinks.classList.add('active');
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-times');
+            if (menuOverlay) menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
+
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            menuIcon.classList.add('fa-bars');
+            menuIcon.classList.remove('fa-times');
+            if (menuOverlay) menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.contains('active') ? closeMenu() : openMenu();
+        });
+
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
 
         // Hover Effect
         document.querySelectorAll('.glass').forEach(card => {
@@ -474,6 +505,19 @@
                 card.style.boxShadow = 'none';
             });
         });
+        const hidePreloader = () => {
+            const preloader = document.getElementById('preloader');
+            if (!preloader || preloader.classList.contains('fade-out')) return;
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    if (window.AOS) AOS.refresh();
+                }, 800);
+            }, 500);
+        };
+        window.addEventListener('load', hidePreloader);
+        setTimeout(hidePreloader, 3000);
     </script>
 </body>
 

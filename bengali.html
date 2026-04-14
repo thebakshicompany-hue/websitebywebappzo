@@ -151,6 +151,9 @@
         </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="menu-overlay" class="menu-overlay"></div>
+
     <main>
         <section class="hero" aria-label="ওয়েবঅ্যাপজোতে স্বাগতম">
             <div class="hero-overlay"></div>
@@ -414,9 +417,12 @@
         function onYouTubeIframeAPIReady() { player = new YT.Player('youtube-player', { videoId: 'ov8Joay19UY', playerVars: { 'autoplay': 1, 'controls': 0, 'rel': 0, 'showinfo': 0, 'loop': 1, 'mute': 1, 'playlist': 'ov8Joay19UY', 'playsinline': 1, 'iv_load_policy': 3, 'disablekb': 1, 'fs': 0, 'modestbranding': 1 }, events: { 'onReady': onPlayerReady } }); }
         function onPlayerReady(event) { event.target.playVideo(); const muteBtn = document.getElementById('mute-toggle'); const icon = muteBtn.querySelector('i'); muteBtn.addEventListener('click', function () { if (player.isMuted()) { player.unMute(); icon.className = 'fas fa-volume-up'; player.setVolume(100); } else { player.mute(); icon.className = 'fas fa-volume-mute'; } }); }
         window.addEventListener('scroll', () => { const nav = document.getElementById('navbar'); const scrollProgress = document.getElementById('scroll-progress'); if (window.scrollY > 50) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } const winScroll = document.body.scrollTop || document.documentElement.scrollTop; const height = document.documentElement.scrollHeight - document.documentElement.clientHeight; scrollProgress.style.width = (winScroll / height) * 100 + "%"; });
-        const menuToggle = document.querySelector('.menu-toggle'); const navLinks = document.querySelector('.nav-links'); const menuIcon = menuToggle.querySelector('i');
-        menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); menuIcon.classList.toggle('fa-bars'); menuIcon.classList.toggle('fa-times'); document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : ''; });
-        document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); menuIcon.classList.add('fa-bars'); menuIcon.classList.remove('fa-times'); document.body.style.overflow = ''; }); });
+        const menuToggle = document.querySelector('.menu-toggle'); const navLinks = document.querySelector('.nav-links'); const menuIcon = menuToggle.querySelector('i'); const menuOverlay = document.getElementById('menu-overlay');
+        function openMenu() { navLinks.classList.add('active'); menuIcon.classList.remove('fa-bars'); menuIcon.classList.add('fa-times'); if (menuOverlay) menuOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeMenu() { navLinks.classList.remove('active'); menuIcon.classList.add('fa-bars'); menuIcon.classList.remove('fa-times'); if (menuOverlay) menuOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+        menuToggle.addEventListener('click', () => { navLinks.classList.contains('active') ? closeMenu() : openMenu(); });
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', closeMenu); });
         const billingToggle = document.getElementById('billing-toggle');
         if (billingToggle) { billingToggle.addEventListener('change', function () { const isAnnual = this.checked; const monthlyLabel = document.getElementById('monthly-label'); const annualLabel = document.getElementById('annual-label'); if (isAnnual) { monthlyLabel.classList.remove('active'); annualLabel.classList.add('active'); document.getElementById('pro-price').innerHTML = '₹1499 ($18)<span>/বছর</span>'; document.getElementById('max-price').innerHTML = '₹5999 ($72)<span>/বছর</span>'; } else { monthlyLabel.classList.add('active'); annualLabel.classList.remove('active'); document.getElementById('pro-price').innerHTML = '₹149 ($1.8)<span>/মাস</span>'; document.getElementById('max-price').innerHTML = '₹599 ($7.2)<span>/মাস</span>'; } }); }
         function handlePayment(planName) { window.location.href = 'index.html#pricing'; }

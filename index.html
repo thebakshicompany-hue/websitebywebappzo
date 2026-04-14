@@ -355,12 +355,12 @@
                 <h1 class="text-gradient cssanimation" data-at-sequence="ca__fx-fadeIn">Dominate, Don't Just Exist</h1>
                 <p class="cssanimation" data-at-sequence="ca__fx-fadeIn" data-at-delay="0.5">Webappzo is the
                     <strong>Best Indian Website Builder</strong> for modern innovators. Build truly
-                    unforgettable websites with the most advanced <strong>alternative to Wix</strong> in India.</p>
+                    unforgettable websites with the most advanced <strong>alternative to Wix</strong> in India.
+                </p>
                 <div class="hero-btns" style="display:flex;">
                     <a href="#pricing" class="btn-primary btn-cta-pulse magnetic">Explore Our Plans <i
                             class="fas fa-arrow-right"></i></a>
-                    <a href="#apps" class="btn-outline magnetic">Discover Our Apps <i
-                            class="fas fa-rocket"></i></a>
+                    <a href="#apps" class="btn-outline magnetic">Discover Our Apps <i class="fas fa-rocket"></i></a>
                 </div>
             </div>
         </section>
@@ -876,7 +876,8 @@
                         <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Your essential math
                             companion. Solve
                             calculations quickly and efficiently with our intuitive interface.</p>
-                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming Soon</a>
+                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming
+                            Soon</a>
                     </div>
                 </div>
 
@@ -887,7 +888,8 @@
                         <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Advanced mathematics
                             with powerful
                             features. Scientific and graphing capabilities for professionals.</p>
-                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming Soon</a>
+                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming
+                            Soon</a>
                     </div>
                 </div>
 
@@ -909,7 +911,8 @@
                         <h3>Samajika</h3>
                         <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Connect, share, and engage with your
                             community. A next-gen social media platform built for meaningful interactions.</p>
-                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming Soon</a>
+                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming
+                            Soon</a>
                     </div>
                 </div>
 
@@ -919,7 +922,8 @@
                         <h3>Emoji Warz</h3>
                         <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Battle it out with emojis! A fun,
                             fast-paced multiplayer game where strategy meets expression.</p>
-                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming Soon</a>
+                        <a href="javascript:void(0)" class="btn-primary" style="opacity: 0.7; cursor: default;">Coming
+                            Soon</a>
                     </div>
                 </div>
             </div>
@@ -1134,8 +1138,7 @@
                         <li><a href="https://vaishalimediaworks.co.in">Marketing</a></li>
                         <li><a href="https://bakshinipun.in">Legal</a></li>
                         <li><a href="https://bd.bdpro.in">Founder</a></li>
-                        <li><a href="https://sites.google.com/bakshinipun.in/webappzo/" target="_blank"
-                                rel="noopener noreferrer">Webappzo Verified</a></li>
+                        <li><a href="https://sites.google.com/bakshinipun.in/webappzo/">Webappzo Verified</a></li>
                     </ul>
                 </div>
             </div>
@@ -1155,7 +1158,8 @@
             <p><i class="fas fa-cookie-bite" style="color: var(--accent); margin-right: 8px;"></i>
                 We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.
                 By clicking "Accept", you consent to our use of cookies.
-                <a href="https://wcee.42web.io/corp/?page_id=38" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                <a href="https://wcee.42web.io/corp/?page_id=38" target="_blank" rel="noopener noreferrer">Privacy
+                    Policy</a>
             </p>
             <div class="cookie-btns">
                 <button id="cookie-decline">Decline</button>
@@ -1202,7 +1206,11 @@
                         class="fas fa-arrow-right" style="margin-left: 10px;"></i></button>
             </form>
             <p style="font-size: 0.75rem; text-align: center; margin-top: 1.5rem; opacity: 0.6;">
-                By continuing, you agree to our <a href="https://wcee.42web.io/corp/?page_id=26" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Terms of Service</a> and <a href="https://wcee.42web.io/corp/?page_id=38" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Privacy Policy</a>.
+                By continuing, you agree to our <a href="https://wcee.42web.io/corp/?page_id=26" target="_blank"
+                    rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Terms of
+                    Service</a> and <a href="https://wcee.42web.io/corp/?page_id=38" target="_blank"
+                    rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Privacy
+                    Policy</a>.
             </p>
         </div>
     </div>
@@ -1445,7 +1453,7 @@
 
             if (passwordGroup) passwordGroup.style.display = 'flex';
             if (passwordConfirmGroup) passwordConfirmGroup.style.display = 'flex';
-            
+
             const passInput = document.getElementById('user-password');
             const passConfirmInput = document.getElementById('user-password-confirm');
             if (passInput) passInput.required = true;
@@ -1461,6 +1469,7 @@
                 document.body.style.overflow = 'hidden';
             }
         }
+        window.handlePayment = handlePayment;
 
         function updateModalPrice() {
             const selectedPlanName = document.getElementById('selected-plan-name');
@@ -1524,44 +1533,99 @@
                 updatePricingUI();
             });
         }
-        // Redundant declarations removed - logic consolidated at the top of the script tag.
+        function handleTokenPayment(tokenName, price) {
+            console.log("Token Payment Triggered:", tokenName);
+            pendingItem = tokenName;
+            pendingType = 'token';
+            pendingBasePrice = price;
+            appliedCoupon = null;
+            discountPercent = 0;
+
+            const authModal = document.getElementById('auth-modal');
+            const couponInput = document.getElementById('coupon-code');
+            const couponMessage = document.getElementById('coupon-message');
+            const passwordGroup = document.getElementById('password-group');
+            const passwordConfirmGroup = document.getElementById('password-confirm-group');
+            const modalTitle = document.querySelector('#auth-modal h3');
+            const modalDesc = document.querySelector('#auth-modal .modal-header p');
+
+            if (couponInput) couponInput.value = '';
+            if (couponMessage) {
+                couponMessage.innerText = '';
+                couponMessage.className = 'coupon-message';
+            }
+
+            if (passwordGroup) passwordGroup.style.display = 'none';
+            if (passwordConfirmGroup) passwordConfirmGroup.style.display = 'none';
+
+            const passInput = document.getElementById('user-password');
+            const passConfirmInput = document.getElementById('user-password-confirm');
+            if (passInput) passInput.required = false;
+            if (passConfirmInput) passConfirmInput.required = false;
+
+            if (modalTitle) modalTitle.innerText = "Complete Your Purchase";
+            if (modalDesc) modalDesc.innerText = "Enter your email to receive your purchase confirmation.";
+
+            updateModalPrice();
+
+            if (authModal) {
+                authModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        window.handleTokenPayment = handleTokenPayment;
+
+        const couponInput = document.getElementById('coupon-code');
+        const couponMessage = document.getElementById('coupon-message');
+        const applyCouponBtn = document.getElementById('apply-coupon');
+        const closeModalBtn = document.getElementById('close-modal');
         const authForm = document.getElementById('auth-form');
 
-        // Coupon Logic
-        applyCouponBtn.addEventListener('click', () => {
-            const code = couponInput.value.toUpperCase().trim();
-            const specialCode = "DIVYANSH-BAKSHI-IS-MY-CLASSMATE-AND-I-DONT-USE-ABUSIVE-LAN".toUpperCase();
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', () => {
+                const authModal = document.getElementById('auth-modal');
+                if (authModal) authModal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
 
-            if (code === specialCode) {
-                if (pendingItem === 'Webappzo Max') {
+        // Coupon Logic
+        if (applyCouponBtn) {
+            applyCouponBtn.addEventListener('click', () => {
+                const code = couponInput.value.toUpperCase().trim();
+                const specialCode = "DIVYANSH-BAKSHI-IS-MY-CLASSMATE-AND-I-DONT-USE-ABUSIVE-LAN".toUpperCase();
+
+                if (code === specialCode) {
+                    if (pendingItem === 'Webappzo Max') {
+                        appliedCoupon = code;
+                        discountPercent = 75;
+                        couponMessage.innerText = `Special Coupon applied! 75% discount on Max Plan.`;
+                        couponMessage.className = 'coupon-message success';
+                        updateModalPrice();
+                    } else {
+                        couponMessage.innerText = "This coupon is only valid for the Webappzo Max plan.";
+                        couponMessage.className = 'coupon-message error';
+                        appliedCoupon = null;
+                        discountPercent = 0;
+                        updateModalPrice();
+                    }
+                } else if (validCoupons[code]) {
                     appliedCoupon = code;
-                    discountPercent = 75;
-                    couponMessage.innerText = `Special Coupon applied! 75% discount on Max Plan.`;
+                    discountPercent = validCoupons[code];
+                    couponMessage.innerText = `Coupon ${code} applied! ${discountPercent}% discount.`;
                     couponMessage.className = 'coupon-message success';
                     updateModalPrice();
+                } else if (code === "") {
+                    couponMessage.innerText = "";
                 } else {
-                    couponMessage.innerText = "This coupon is only valid for the Webappzo Max plan.";
+                    couponMessage.innerText = "Invalid coupon code.";
                     couponMessage.className = 'coupon-message error';
                     appliedCoupon = null;
                     discountPercent = 0;
                     updateModalPrice();
                 }
-            } else if (validCoupons[code]) {
-                appliedCoupon = code;
-                discountPercent = validCoupons[code];
-                couponMessage.innerText = `Coupon ${code} applied! ${discountPercent}% discount.`;
-                couponMessage.className = 'coupon-message success';
-                updateModalPrice();
-            } else if (code === "") {
-                couponMessage.innerText = "";
-            } else {
-                couponMessage.innerText = "Invalid coupon code.";
-                couponMessage.className = 'coupon-message error';
-                appliedCoupon = null;
-                discountPercent = 0;
-                updateModalPrice();
-            }
-        });
+            });
+        }
 
         // Close Modal logic
         if (closeModalBtn && authModal) {
@@ -1802,9 +1866,11 @@
 
         document.querySelectorAll('[data-aos^="reveal"]').forEach(el => revealObserver.observe(el));
 
-        // Preloader Hide Logic (Already exists, but adding AOS refresh)
-        window.addEventListener('load', () => {
+        // Robust Preloader Hide Logic
+        const hidePreloader = () => {
             const preloader = document.getElementById('preloader');
+            if (!preloader || preloader.classList.contains('fade-out')) return;
+            
             setTimeout(() => {
                 preloader.classList.add('fade-out');
                 setTimeout(() => {
@@ -1812,7 +1878,11 @@
                     if (window.AOS) AOS.refresh();
                 }, 800);
             }, 500);
-        });
+        };
+
+        window.addEventListener('load', hidePreloader);
+        // Failsafe: hide after 3 seconds anyway
+        setTimeout(hidePreloader, 3000);
 
         // Parallax Floating Elements
         window.addEventListener('scroll', () => {
@@ -1839,18 +1909,18 @@
 
     <!-- Cookie Consent Logic -->
     <script>
-        (function() {
+        (function () {
             const banner = document.getElementById('cookie-consent');
             if (!banner) return;
             if (localStorage.getItem('cookie-consent')) return;
 
-            setTimeout(function() { banner.classList.add('visible'); }, 1500);
+            setTimeout(function () { banner.classList.add('visible'); }, 1500);
 
             const acceptBtn = document.getElementById('cookie-accept');
             const declineBtn = document.getElementById('cookie-decline');
 
             if (acceptBtn) {
-                acceptBtn.addEventListener('click', function() {
+                acceptBtn.addEventListener('click', function () {
                     localStorage.setItem('cookie-consent', 'accepted');
                     banner.classList.remove('visible');
                     banner.classList.add('hidden');
@@ -1858,7 +1928,7 @@
             }
 
             if (declineBtn) {
-                declineBtn.addEventListener('click', function() {
+                declineBtn.addEventListener('click', function () {
                     localStorage.setItem('cookie-consent', 'declined');
                     banner.classList.remove('visible');
                     banner.classList.add('hidden');

@@ -301,6 +301,13 @@
 </head>
 
 <body>
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="images/image5.png" alt="Webappzo Logo" class="loader-logo">
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+            <p class="loader-text">Dominate, Don't Just Exist</p>
+        </div>
+    </div>
     <!-- YouTube Background -->
     <div class="video-background">
         <div id="youtube-player"></div>
@@ -606,29 +613,21 @@
                 iframe.setAttribute('tabindex', '-1');
                 iframe.style.pointerEvents = 'none';
             }
-        }
 
-        // Mute logic
-        let player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('youtube-player', {
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-        function onPlayerReady(event) {
+            // Mute toggle logic
             const muteBtn = document.getElementById('mute-toggle');
-            const icon = muteBtn.querySelector('i');
-            muteBtn.addEventListener('click', function() {
-                if (player.isMuted()) {
-                    player.unMute();
-                    icon.className = 'fas fa-volume-up';
-                } else {
-                    player.mute();
-                    icon.className = 'fas fa-volume-mute';
-                }
-            });
+            if (muteBtn) {
+                const icon = muteBtn.querySelector('i');
+                muteBtn.addEventListener('click', function() {
+                    if (player.isMuted()) {
+                        player.unMute();
+                        icon.className = 'fas fa-volume-up';
+                    } else {
+                        player.mute();
+                        icon.className = 'fas fa-volume-mute';
+                    }
+                });
+            }
         }
     </script>
 
@@ -682,7 +681,21 @@
             </div>
         </div>
     </footer>
+    <script>
+        const hidePreloader = () => {
+            const preloader = document.getElementById('preloader');
+            if (!preloader || preloader.classList.contains('fade-out')) return;
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    if (window.AOS) AOS.refresh();
+                }, 800);
+            }, 500);
+        };
+        window.addEventListener('load', hidePreloader);
+        setTimeout(hidePreloader, 3000);
+    </script>
     <script src="https://www.youtube.com/iframe_api" defer></script>
 </body>
-
 </html>
