@@ -341,27 +341,31 @@
             <a href="#" class="logo magnetic" aria-label="Webappzo Home">
 <img src="images/image5.png" alt="Webappzo Logo" loading="eager" width="40" height="40" decoding="async">
             </a>
-            <ul class="nav-links">
-                <li><a href="#about" class="magnetic">About</a></li>
-                <li><a href="#team" class="magnetic">Team</a></li>
-                <li><a href="#pricing" class="magnetic">Pricing</a></li>
-                <li><a href="#apps" class="magnetic">Apps</a></li>
-                <li><a href="#clients" class="magnetic">Clients</a></li>
-                <li><a href="blog.html" class="magnetic">Blog</a></li>
-                <li><a href="#why-us" class="magnetic">Why Choose Us</a></li>
-                <li class="lang-dropdown">
-                    <a href="#" class="lang-link magnetic"><i class="fas fa-globe"></i> Language</a>
-                    <ul class="lang-menu">
-                        <li><a href="index.html" class="active-lang">🇬🇧 English</a></li>
-                        <li><a href="hindi.html">🇮🇳 हिन्दी</a></li>
-                        <li><a href="tamil.html">🇮🇳 தமிழ்</a></li>
-                        <li><a href="telugu.html">🇮🇳 తెలుగు</a></li>
-                        <li><a href="bengali.html">🇮🇳 বাংলা</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://webappzo.bdpro.in/sign-in" class="btn-primary" style="margin-left: 20px;">Get
-                        Started <i class="fas fa-rocket"></i></a></li>
-            </ul>
+            <div class="nav-links-wrapper">
+                <ul class="nav-links">
+                    <li><a href="#about" class="magnetic">About</a></li>
+                    <li><a href="#team" class="magnetic">Team</a></li>
+                    <li><a href="#pricing" class="magnetic">Pricing</a></li>
+                    <li><a href="#apps" class="magnetic">Apps</a></li>
+                    <li><a href="#clients" class="magnetic">Clients</a></li>
+                    <li><a href="blog.html" class="magnetic">Blog</a></li>
+                    <li><a href="#why-us" class="magnetic">Why Choose Us</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <div class="lang-dropdown">
+                        <a href="#" class="lang-link magnetic"><i class="fas fa-globe"></i> Language</a>
+                        <ul class="lang-menu">
+                            <li><a href="index.html" class="active-lang">🇬🇧 English</a></li>
+                            <li><a href="hindi.html">🇮🇳 हिन्दी</a></li>
+                            <li><a href="tamil.html">🇮🇳 தமிழ்</a></li>
+                            <li><a href="telugu.html">🇮🇳 తెలుగు</a></li>
+                            <li><a href="bengali.html">🇮🇳 বাংলা</a></li>
+                        </ul>
+                    </div>
+                    <a href="https://webappzo.bdpro.in/sign-in" class="btn-primary">Get Started <i class="fas fa-rocket"></i></a>
+                </div>
+            </div>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
@@ -1329,7 +1333,7 @@
 
         // Modern Mobile Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        const navLinks = document.querySelector('.nav-links-wrapper');
         const menuIcon = menuToggle.querySelector('i');
         const menuOverlay = document.getElementById('menu-overlay');
 
