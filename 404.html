@@ -7,7 +7,8 @@
 
     <!-- SEO Meta -->
     <title>404 - Page Not Found | Webappzo - Best Indian Website Builder</title>
-    <meta name="description" content="The page you're looking for doesn't exist. Visit Webappzo's homepage to explore our website builder, AI tools, and business solutions for Indian startups.">
+    <meta name="description"
+        content="The page you're looking for doesn't exist. Visit Webappzo's homepage to explore our website builder, AI tools, and business solutions for Indian startups.">
     <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://bdpro.in/404.html">
 
@@ -21,118 +22,287 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/image5.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/image5.png">
-
     <meta name="theme-color" content="#dc2626">
 
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            background: #060608;
-            height: 100vh;
+            background: #050505;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #ffffff;
+        }
+
+        /* ── Animated particle canvas (Premium Dark) ── */
+        #particles-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* ── Ambient glow orbs ── */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+        }
+        .orb-1 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(220,38,38,0.2), transparent 70%);
+            top: -10%; left: -10%;
+        }
+        .orb-2 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(248,113,113,0.15), transparent 70%);
+            bottom: -10%; right: -10%;
+        }
+
+        /* ── Main container ── */
+        .error-wrapper {
+            position: relative;
+            z-index: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin: 0;
+            padding: 2rem;
+            max-width: 720px;
         }
 
-        .error-container {
-            max-width: 600px;
-            padding: 3rem;
+        /* ── 404 number ── */
+        .error-code-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
         }
 
         .error-code {
-            font-size: 8rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(7rem, 20vw, 12rem);
             font-weight: 800;
             line-height: 1;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: float 6s ease-in-out infinite;
+            position: relative;
+            letter-spacing: -4px;
+            opacity: 0;
         }
 
-        .error-title {
-            font-size: 2rem;
+        /* ── Badge ── */
+        .error-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1.2rem;
+            border-radius: 999px;
+            background: rgba(220,38,38,0.1);
+            border: 1px solid rgba(220,38,38,0.2);
+            color: #f87171;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             margin-bottom: 1.5rem;
-            color: #fff;
+            opacity: 0;
         }
 
+        /* ── Title ── */
+        .error-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            color: #ffffff;
+            opacity: 0;
+        }
+
+        /* ── Description ── */
         .error-desc {
+            color: #d6d6d6;
+            font-size: 1.05rem;
+            line-height: 1.7;
             margin-bottom: 2.5rem;
-            color: var(--text-gray);
-            font-size: 1.1rem;
+            max-width: 500px;
+            opacity: 0;
+        }
+
+        /* ── CTA Buttons ── */
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+            opacity: 0;
         }
 
         .back-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
+            gap: 0.6rem;
+            padding: 0.9rem 2.2rem;
             border-radius: 999px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            background: linear-gradient(135deg, #dc2626, #f87171);
+            color: #ffffff;
             font-weight: 600;
-            text-decoration: none;
-            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 12px 25px -10px var(--primary-glow);
-        }
-
-        .back-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 45px -12px var(--primary-glow);
-        }
-
-        .helpful-links {
-            margin-top: 3rem;
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .helpful-links a {
-            color: var(--text-gray);
-            text-decoration: none;
-            transition: color 0.3s;
             font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(220,38,38,0.3);
+        }
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(220,38,38,0.4);
         }
 
+        .search-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.9rem 2.2rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.05);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .search-btn:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ── Helpful Links ── */
+        .helpful-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 0.4rem 1rem;
+            transition: color 0.3s ease;
+            opacity: 0;
+        }
         .helpful-links a:hover {
-            color: var(--primary);
+            color: #ffffff;
         }
     </style>
 </head>
 
 <body>
-    <div class="error-container glass">
-        <div class="error-code">404</div>
-        <h1 class="error-title">Whoops! Lost in Space?</h1>
-        <p class="error-desc">The page you're looking for doesn't exist or has been moved. Don't let your digital
-            presence fade—head back and dominate!</p>
-        <a href="index.html" class="back-btn"><i class="fas fa-home"></i> Dominate Again (Home)</a>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <canvas id="particles-canvas"></canvas>
 
-        <nav class="helpful-links" aria-label="Helpful Links">
+    <div class="error-wrapper">
+        <div class="error-badge">Page Not Found</div>
+
+        <div class="error-code-wrapper">
+            <div class="error-code">404</div>
+        </div>
+
+        <h1 class="error-title">Lost in the dark</h1>
+        <p class="error-desc">The page you're searching for has vanished into the digital void. Let's get you back home.</p>
+
+        <div class="error-actions">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+            <a href="blog.html" class="search-btn">
+                Read Blog
+            </a>
+        </div>
+
+        <nav class="helpful-links">
             <a href="index.html#pricing">Pricing</a>
-            <a href="blog.html">Blog</a>
             <a href="index.html#apps">Apps</a>
             <a href="website-builder-for-small-business-india.html">Small Business</a>
             <a href="sitemap.xml">Sitemap</a>
         </nav>
     </div>
 
-    <!-- 3D Decorative Element Reused -->
-    <div class="hero-3d-container" style="position: fixed; opacity: 0.2;">
-        <div class="floating-cube"></div>
-    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const tl = anime.timeline({ easing: 'easeOutExpo' });
+
+        tl.add({
+            targets: '.orb',
+            opacity: [0, 1],
+            scale: [0.5, 1],
+            duration: 2000
+        }, 0);
+
+        tl.add({
+            targets: '.error-badge',
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 800
+        }, 400);
+
+        tl.add({
+            targets: '.error-code',
+            opacity: [0, 1],
+            scale: [0.5, 1],
+            duration: 1200
+        }, 600);
+
+        tl.add({
+            targets: '.error-title',
+            opacity: [0, 1],
+            translateY: [30, 0],
+            duration: 1000
+        }, 800);
+
+        tl.add({
+            targets: '.error-desc',
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 800
+        }, 1000);
+
+        tl.add({
+            targets: '.error-actions',
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 800
+        }, 1200);
+
+        tl.add({
+            targets: '.helpful-links a',
+            opacity: [0, 1],
+            delay: anime.stagger(100),
+            duration: 600
+        }, 1400);
+    });
+    </script>
 </body>
 
 </html>

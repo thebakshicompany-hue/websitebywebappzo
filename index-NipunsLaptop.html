@@ -8,10 +8,10 @@
     <meta name="HandheldFriendly" content="True">
 
     <!-- Primary SEO Meta Tags -->
-    <title>Webappzo | Best Indian Website Builder for Startups & Small Business</title>
-    <meta name="title" content="Webappzo | Best Indian Website Builder for Startups & Small Business">
+    <title>Webappzo - Best Indian Website Builder | Dominate, Don't Just Exist</title>
+    <meta name="title" content="Webappzo - Best Indian Website Builder | Dominate, Don't Just Exist">
     <meta name="description"
-        content="Affordable Zoho Sites & Shopify alternative for Indian startups. Best website builder with AI chatbot, UPI payments, and 15+ business apps from ₹0/month. Dominate the digital world.">
+        content="Affordable Zoho Sites and Shopify alternative for Indian startups. Best Indian website builder for small businesses. Dominate, don't just exist with Webappzo.">
     <meta name="keywords"
         content="Wix alternatives for small business India, Affordable Zoho Sites alternative India, Low cost alternative to Shopify for Indian startups, Best Indian website builder for small business, Webappzo vs Wix vs GoDaddy comparison, Cheapest website builder with AI chatbot India, Best website builder under 500 rupees per month, Professional website builder with free business tools, Affordable e-commerce website builder with UPI integration, Free website builder with video conferencing tools, All-in-one business website and productivity suite, Website builder with built-in team collaboration tools, SaaS platform with integrated video meeting app, Best website builder for agencies with client management, Unified ecosystem for digital business India, No-code website builder with code export, Developer-friendly drag and drop website builder, Customizable SaaS website builder for developers, SEO optimized website builder for Indian startups, Fastest loading website builder for Indian mobile users, Webappzo, bdpro.in">
     <meta name="author" content="Webappzo - Divyansh Bakshi">
@@ -222,45 +222,6 @@
     }
     </script>
 
-    <!-- Structured Data - LocalBusiness -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Webappzo",
-      "image": "https://bdpro.in/images/image5.png",
-      "@id": "https://bdpro.in",
-      "url": "https://bdpro.in",
-      "telephone": "+918800204781",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Sector 62",
-        "addressLocality": "Noida",
-        "postalCode": "201309",
-        "addressRegion": "UP",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 28.628,
-        "longitude": 77.373
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
-        "opens": "09:00",
-        "closes": "21:00"
-      }
-    }
-    </script>
-
     <!-- CSS -->
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css">
@@ -278,26 +239,29 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </noscript>
 
-    <!-- Performance Optimization: Resource Hints -->
+    <!-- Performance Optimization: Fonts & Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://unpkg.com">
+
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://unpkg.com">
 
-    <!-- Fonts Link (with display=swap) -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Fonts Link (Moved from CSS for faster LCP) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
-    <!-- Preload LCP Logo -->
-    <link rel="preload" as="image" href="images/image5.png">
+    <!-- Preload Hero Video for LCP -->
+    <link rel="preload" as="video" href="websitebackgground/14380225_1920_1080_24fps.mp4" type="video/mp4">
 
-    <!-- Core SDKs (Loaded normally for stability) -->
+    <!-- Razorpay Checkout SDK -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@vlatest/dist/pocketbase.umd.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 
+    <!-- PocketBase SDK -->
+    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@vlatest/dist/pocketbase.umd.js"></script>
 </head>
 
 <body>
@@ -318,7 +282,8 @@
     <div class="cursor-outer"></div>
     <div id="cursor-glow" class="cursor-glow"></div>
 
-
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
 
     <!-- YouTube Background -->
     <div class="video-background">
@@ -342,7 +307,8 @@
     <nav id="navbar">
         <div class="container nav-content">
             <a href="#" class="logo magnetic" aria-label="Webappzo Home">
-<img src="images/image5.png" alt="Webappzo Logo" loading="eager" width="40" height="40" decoding="async">
+                <img src="images/image5.png" alt="Webappzo Logo - Premium Website Builder" loading="eager" width="40"
+                    height="40" decoding="async">
             </a>
             <ul class="nav-links">
                 <li><a href="#about" class="magnetic">About</a></li>
@@ -380,7 +346,13 @@
         <section class="hero section-reveal" aria-label="Welcome to Webappzo">
             <div class="hero-overlay"></div>
 
-
+            <!-- 3D Decorative Element -->
+            <div class="hero-3d-container" data-aos="zoom-in" data-aos-duration="2000">
+                <div class="floating-cube"></div>
+                <div class="glow-orb"
+                    style="position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, var(--primary-glow) 0%, transparent 60%); top: -100px; right: -100px; opacity: 0.5;">
+                </div>
+            </div>
 
             <div class="container hero-content" data-aos="fade-up" data-aos-duration="1200">
                 <h1 class="text-gradient cssanimation" data-at-sequence="ca__fx-fadeIn">Dominate, Don't Just Exist</h1>
@@ -1080,10 +1052,23 @@
                     Industry Leaders</h2>
                 <div class="clients-wrapper" data-aos="zoom-in">
                     <div class="clients-track">
-<img src="images/image1.png" alt="Webappzo Partner" loading="lazy" decoding="async">
-<img src="images/image2.png" alt="Trusted Client" loading="lazy" decoding="async">
-<img src="images/image3.png" alt="Corporate Partner" loading="lazy" decoding="async">
-<img src="images/image6.png" alt="Strategic Partner" loading="lazy" decoding="async">
+                        <img src="images/image1.png" alt="Webappzo Partner - Bakshi Associates" loading="lazy"
+                            width="200" height="60" decoding="async">
+                        <img src="images/image2.png" alt="Trusted Client - Vaishali Media Works" loading="lazy"
+                            width="200" height="60" decoding="async">
+                        <img src="images/image3.png" alt="Corporate Partner - WCE Corp" loading="lazy" width="200"
+                            height="60" decoding="async">
+                        <img src="images/image6.png" alt="Strategic Partner" loading="lazy" width="200" height="60"
+                            decoding="async">
+                        <!-- Duplicate for infinite scroll effect -->
+                        <img src="images/image1.png" alt="Webappzo Partner - Bakshi Associates" loading="lazy"
+                            width="200" height="60" decoding="async">
+                        <img src="images/image2.png" alt="Trusted Client - Vaishali Media Works" loading="lazy"
+                            width="200" height="60" decoding="async">
+                        <img src="images/image3.png" alt="Corporate Partner - WCE Corp" loading="lazy" width="200"
+                            height="60" decoding="async">
+                        <img src="images/image6.png" alt="Strategic Partner" loading="lazy" width="200" height="60"
+                            decoding="async">
                     </div>
                 </div>
             </div>
@@ -1595,6 +1580,7 @@
                         submitBtn.disabled = false;
                         return;
                     }
+
                     try {
                         const record = await pb.collection('users').create({
                             "email": email,
@@ -1605,9 +1591,11 @@
                         });
                         pbUserId = record.id;
                     } catch (err) {
-                        console.log("Proceeding with existing account logic...");
+                        // User might already exist, try to find them or just re-throw error for handling
+                        throw err;
                     }
                 }
+
                 // Success! Close modal and proceed to payment
                 authModal.classList.remove('active');
                 document.body.style.overflow = '';
@@ -1762,17 +1750,7 @@
 
         // YouTube Iframe API
     </script>
-    <!-- Deferred YouTube Loading for <3s Performance -->
-    <script>
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const tag = document.createElement('script');
-                tag.src = "https://www.youtube.com/iframe_api";
-                const firstScriptTag = document.getElementsByTagName('script')[0];
-                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-            }, 2000); // Wait for critical render
-        });
-    </script>
+    <script src="https://www.youtube.com/iframe_api" defer></script>
     <script src='https://cdn.jotfor.ms/agent/embedjs/0195834a3fdc755c8ee3e31fd0da25212cff/embed.js' defer></script>
     <script src="https://cdn.jsdelivr.net/npm/animtext@latest/dist/animtext.min.js" defer></script>
     <script>
@@ -1834,14 +1812,16 @@
 
         document.querySelectorAll('[data-aos^="reveal"]').forEach(el => revealObserver.observe(el));
 
-        // Optimized Preloader Hide Logic
+        // Preloader Hide Logic (Already exists, but adding AOS refresh)
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
-            preloader.classList.add('fade-out');
             setTimeout(() => {
-                preloader.style.display = 'none';
-                if (window.AOS) AOS.refresh();
-            }, 600); // Reduced delay
+                preloader.classList.add('fade-out');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    if (window.AOS) AOS.refresh();
+                }, 800);
+            }, 500);
         });
 
         // Parallax Floating Elements

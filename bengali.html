@@ -120,6 +120,9 @@
     <link rel="preload" as="video" href="websitebackgground/14380225_1920_1080_24fps.mp4" type="video/mp4">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@vlatest/dist/pocketbase.umd.js"></script>
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 
 <body>
@@ -130,7 +133,7 @@
             <p class="loader-text">আধিপত্য করুন, শুধু অস্তিত্বে থাকবেন না</p>
         </div>
     </div>
-    <div id="scroll-progress"></div>
+
     <div class="video-background"><div id="youtube-player"></div></div>
     <div id="mute-control">
         <button id="mute-toggle" aria-label="Toggle Audio"><i class="fas fa-volume-mute"></i></button>
@@ -173,7 +176,7 @@
     <main>
         <section class="hero" aria-label="ওয়েবঅ্যাপজোতে স্বাগতম">
             <div class="hero-overlay"></div>
-            <div class="hero-3d-container" data-aos="zoom-in" data-aos-duration="2000"><div class="floating-cube"></div></div>
+
             <div class="container hero-content" data-aos="fade-up" data-aos-duration="1200">
                 <h1 class="text-gradient cssanimation" data-at-sequence="ca__fx-fadeIn">আধিপত্য করুন, শুধু অস্তিত্বে থাকবেন না</h1>
                 <p>ওয়েবঅ্যাপজো <strong>ছোট ব্যবসার জন্য সেরা ভারতীয় ওয়েবসাইট বিল্ডার</strong>। ভারতে Wix
@@ -469,6 +472,7 @@
             });
         });
     </script>
+    <script src="anime-animations.js" defer></script>
 </body>
 
 </html>

@@ -1366,10 +1366,8 @@ footer {
         border-radius: 12px;
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         opacity: 0.85;
-        color: var(--text-white);
-        -webkit-tap-highlight-color: transparent;
     }
 
     .nav-links a::after {
@@ -1379,30 +1377,24 @@ footer {
     .nav-links a:hover {
         background: rgba(220, 38, 38, 0.1);
         opacity: 1;
-        transform: none; /* Removed translateX for mobile stability */
+        transform: translateX(6px);
     }
 
-    /* Cleaner divider between menu and CTA */
+    /* Divider line between sections */
     .nav-links li:last-child {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    /* Language link mobile — Complete Reset & Alignment */
+    /* Language link mobile */
     .lang-link {
-        display: flex !important;
         width: 100% !important;
-        justify-content: flex-start !important;
-        align-items: center !important;
-        margin: 0.4rem 0 !important;
-        padding: 1rem 1.25rem !important;
-        background: rgba(255, 255, 255, 0.04) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-radius: 14px !important;
-        gap: 12px !important;
-        color: var(--text-white) !important;
-        -webkit-tap-highlight-color: transparent !important;
+        justify-content: space-between !important;
+        margin: 0.5rem 0 !important;
+        padding: 0.8rem 1.2rem !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-radius: 12px !important;
     }
 
     .lang-dropdown .lang-menu {
@@ -1410,36 +1402,19 @@ footer {
         width: 100%;
         top: 0;
         right: 0;
-        background: rgba(255, 255, 255, 0.02);
-        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
         border: none;
         box-shadow: none;
         margin-top: 0.5rem;
-        padding: 0.5rem;
-        display: none; /* Controlled by JS or CSS toggle */
+        padding: 0;
     }
 
-    .lang-dropdown.active .lang-menu {
-        display: block;
-    }
-
-    .lang-menu a {
-        font-size: 0.95rem !important;
-        padding: 0.75rem 1rem !important;
-        opacity: 0.7 !important;
-    }
-
-    .lang-menu a:hover {
-        background: rgba(255, 255, 255, 0.05) !important;
-        opacity: 1 !important;
-    }
-
-    /* Consolidated Mobile CTA styling */
+    /* Mobile CTA button */
     .nav-links li:last-child {
         width: 100%;
-        margin-top: 1.5rem;
-        padding-top: 1.25rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 1.5rem; /* Increased margin */
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     /* Override inline styles for grid layouts */

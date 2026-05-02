@@ -1,35 +1,7 @@
-# Robots.txt for Webappzo - bdpro.in
-# https://bdpro.in/
-
 User-agent: *
 Allow: /
-Disallow: /private/
 Disallow: /admin/
+Disallow: /pocketbase/
 
-# Crawl delay for polite crawling
-Crawl-delay: 1
-
-# Sitemap location
+# Sitemaps
 Sitemap: https://bdpro.in/sitemap.xml
-
-# RSS Feed
-# https://bdpro.in/rss.xml
-
-# Google specific
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
-
-# Google Image Bot
-User-agent: Googlebot-Image
-Allow: /images/
-
-# Bing specific
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-# Yandex
-User-agent: Yandex
-Allow: /
-Crawl-delay: 2

@@ -99,6 +99,9 @@
     <link rel="preload" as="video" href="websitebackgground/14380225_1920_1080_24fps.mp4" type="video/mp4">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@vlatest/dist/pocketbase.umd.js"></script>
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 
 <body>
@@ -109,7 +112,7 @@
             <p class="loader-text">ఆధిపత్యం చేయండి, కేవలం ఉనికిలో ఉండకండి</p>
         </div>
     </div>
-    <div id="scroll-progress"></div>
+
     <div class="video-background"><div id="youtube-player"></div></div>
     <div id="mute-control">
         <button id="mute-toggle" aria-label="Toggle Audio"><i class="fas fa-volume-mute"></i></button>
@@ -152,7 +155,7 @@
     <main>
         <section class="hero" aria-label="వెబాప్జోకు స్వాగతం">
             <div class="hero-overlay"></div>
-            <div class="hero-3d-container" data-aos="zoom-in" data-aos-duration="2000"><div class="floating-cube"></div></div>
+
             <div class="container hero-content" data-aos="fade-up" data-aos-duration="1200">
                 <h1 class="text-gradient cssanimation" data-at-sequence="ca__fx-fadeIn">ఆధిపత్యం చేయండి, కేవలం ఉనికిలో ఉండకండి</h1>
                 <p>వెబాప్జో <strong>చిన్న వ్యాపారాలకు అత్యుత్తమ భారతీయ వెబ్‌సైట్ బిల్డర్</strong>. భారతదేశంలో Wix
@@ -451,6 +454,7 @@
             });
         });
     </script>
+    <script src="anime-animations.js" defer></script>
 </body>
 
 </html>
