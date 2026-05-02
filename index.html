@@ -313,10 +313,7 @@
         </div>
     </div>
 
-    <!-- Interactive Cursor Elements -->
-    <div class="cursor-follower"></div>
-    <div class="cursor-outer"></div>
-    <div id="cursor-glow" class="cursor-glow"></div>
+
 
 
 
@@ -1776,52 +1773,7 @@
     <script src='https://cdn.jotfor.ms/agent/embedjs/0195834a3fdc755c8ee3e31fd0da25212cff/embed.js' defer></script>
     <script src="https://cdn.jsdelivr.net/npm/animtext@latest/dist/animtext.min.js" defer></script>
     <script>
-        // Flagship Animations: Cursor, Magnetic, and Scroll Blur
-        const follower = document.querySelector('.cursor-follower');
-        const outer = document.querySelector('.cursor-outer');
-        const glow = document.getElementById('cursor-glow');
-        let mouseX = 0, mouseY = 0;
-        let followX = 0, followY = 0;
-        let outerX = 0, outerY = 0;
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            if (glow) glow.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-        });
-
-        // Smooth Cursor Follower Logic
-        function animateCursor() {
-            followX += (mouseX - followX) * 0.15;
-            followY += (mouseY - followY) * 0.15;
-            outerX += (mouseX - outerX) * 0.1;
-            outerY += (mouseY - outerY) * 0.1;
-
-            if (follower) follower.style.transform = `translate(${followX}px, ${followY}px)`;
-            if (outer) outer.style.transform = `translate(${outerX}px, ${outerY}px)`;
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Magnetic Elements Logic
-        const magneticElements = document.querySelectorAll('.btn-primary, .btn-outline, .logo, .stat-card, .magnetic, .nav-links a');
-        magneticElements.forEach(el => {
-            el.addEventListener('mousemove', (e) => {
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-
-                if (follower) follower.classList.add('cursor-hover');
-                if (outer) outer.classList.add('cursor-outer-hover');
-            });
-
-            el.addEventListener('mouseleave', () => {
-                el.style.transform = `translate(0, 0)`;
-                if (follower) follower.classList.remove('cursor-hover');
-                if (outer) outer.classList.remove('cursor-outer-hover');
-            });
-        });
 
         // Sophisticated Reveal Logic (Intersection Observer for clip-path)
         const revealObserver = new IntersectionObserver((entries) => {
